@@ -35,16 +35,8 @@ ColumnLayout {
         Layout.fillWidth:   true
         radius:             _outerRadius
         color:              qgcPal.window
-        DeadMouseArea { anchors.fill: parent }
 
-        // QGCAttitudeWidget {
-        //     id:                     attitude1
-        //     anchors.rightMargin:    _topBottomMargin
-        //     anchors.right:           parent.left
-        //     size:                   _innerRadius * 2
-        //     vehicle:                globals.activeVehicle
-        //     anchors.verticalCenter: parent.verticalCenter
-        // }
+        DeadMouseArea { anchors.fill: parent }
 
         QGCAttitudeWidget {
             id:                     attitude
@@ -63,7 +55,6 @@ ColumnLayout {
             vehicle:                globals.activeVehicle
             anchors.verticalCenter: parent.verticalCenter
         }
-
     }
 
     TerrainProgress {

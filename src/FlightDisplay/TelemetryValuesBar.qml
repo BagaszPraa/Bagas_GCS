@@ -32,7 +32,7 @@ Rectangle {
         anchors.margins:    _toolsMargin
         anchors.bottom:     parent.bottom
         anchors.left:       parent.left
-        /////////USER//
+
          RowLayout {
             visible: mouseArea.containsMouse || valueArea.settingsUnlocked
 

@@ -267,7 +267,7 @@ QGCApplication::QGCApplication(int &argc, char* argv[], bool unitTesting)
 #ifdef DAILY_BUILD
         // This gives daily builds their own separate settings space. Allowing you to use daily and stable builds
         // side by side without daily screwing up your stable settings.
-        applicationName = QStringLiteral("ATBase");
+        applicationName = QStringLiteral("AeroTerraScan GCS");
 #else
         applicationName = QGC_APPLICATION_NAME;
 #endif

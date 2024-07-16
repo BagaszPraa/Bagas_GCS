@@ -728,6 +728,7 @@ Item {
                 rallyPoint:             _rallyPointController.currentRallyPoint
                 controller:             _rallyPointController
             }
+
         }
 
         QGCLabel {

@@ -90,7 +90,7 @@ Item {
         fillMode:           Image.PreserveAspectFit
         sourceSize.height:  height
         opacity:            1
-        color:              QGroundControl.gpsRtk.active.value ? qgcPal.colorRed : qgcPal.text
+        color:              QGroundControl.gpsRtk.active.value ? qgcPal.colorRed : qgcPal.buttonText
     }
 
     Column {
