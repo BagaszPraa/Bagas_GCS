@@ -357,9 +357,9 @@ CustomBuild {
         RESOURCES += $$PWD/resources/InstrumentValueIcons/InstrumentValueIcons.qrc
     }
 } else {
-    DEFINES += QGC_APPLICATION_NAME=\"\\\"AeroTerraScanGCS\\\"\"
-    DEFINES += QGC_ORG_NAME=\"\\\"AeroTerraScan.org\\\"\"
-    DEFINES += QGC_ORG_DOMAIN=\"\\\"org.AeroTerraScan\\\"\"
+    DEFINES += QGC_APPLICATION_NAME=\"\\\"ATBase\\\"\"
+    DEFINES += QGC_ORG_NAME=\"\\\"ATBase\\\"\"
+    DEFINES += QGC_ORG_DOMAIN=\"\\\"ATBase\\\"\"
     RESOURCES += \
         $$PWD/qgroundcontrol.qrc \
         $$PWD/qgcresources.qrc \
