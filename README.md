@@ -1,3 +1,11 @@
+# Make Installer
+```shell
+CONFIG+=installer #Qt 5.15.2
+```
+
+
+
+
 # QGroundControl Ground Control Station
 
 [![Releases](https://img.shields.io/github/release/mavlink/QGroundControl.svg)](https://github.com/mavlink/QGroundControl/releases)

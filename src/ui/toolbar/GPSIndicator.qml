@@ -28,7 +28,6 @@ Item {
 
     property var _activeVehicle: QGroundControl.multiVehicleManager.activeVehicle
 
-
     Component {
         id: gpsInfo
 
@@ -85,7 +84,7 @@ Item {
         fillMode:           Image.PreserveAspectFit
         sourceSize.height:  height
         opacity:            (_activeVehicle && _activeVehicle.gps.count.value >= 0) ? 1 : 0.5
-        color:              qgcPal.text
+        color:              qgcPal.buttonText
     }
 
     Column {
@@ -95,20 +94,17 @@ Item {
         anchors.left:           gpsIcon.right
 
         QGCLabel {
+            anchors.horizontalCenter:   hdopValue.horizontalCenter
             visible:                    _activeVehicle && !isNaN(_activeVehicle.gps.hdop.value)
             color:                      qgcPal.buttonText
             text:                       _activeVehicle ? _activeVehicle.gps.count.valueString : ""
-            font.pointSize:             ScreenTools.mediumFontPointSize
-            anchors.horizontalCenter:   parent.horizontalCenter
-
         }
+
         QGCLabel {
+            id:         hdopValue
             visible:    _activeVehicle && !isNaN(_activeVehicle.gps.hdop.value)
             color:      qgcPal.buttonText
             text:       _activeVehicle ? _activeVehicle.gps.hdop.value.toFixed(1) : ""
-            font.pointSize:            ScreenTools.mediumFontPointSize
-            anchors.horizontalCenter:   parent.horizontalCenter
-
         }
     }
 

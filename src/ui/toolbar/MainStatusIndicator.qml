@@ -32,14 +32,14 @@ RowLayout {
     QGCLabel {
         id:             mainStatusLabel
         text:           mainStatusText()
-        font.pointSize: _vehicleInAir ? ScreenTools.largeFontPointSize : ScreenTools.largeFontPointSize
+        font.pointSize: _vehicleInAir ? ScreenTools.defaultFontPointSize : ScreenTools.largeFontPointSize
 
-        property string _commLostText:      qsTr("Koneksi Terputus")
-        property string _readyToFlyText:    qsTr("Siap Terbang")
-        property string _notReadyToFlyText: qsTr("Belum Siap")
-        property string _disconnectedText:  qsTr("Terputus")
+        property string _commLostText:      qsTr("Communication Lost")
+        property string _readyToFlyText:    qsTr("Ready To Fly")
+        property string _notReadyToFlyText: qsTr("Not Ready")
+        property string _disconnectedText:  qsTr("Disconnected")
         property string _armedText:         qsTr("Armed")
-        property string _flyingText:        qsTr("Terbang")
+        property string _flyingText:        qsTr("Flying")
         property string _landingText:       qsTr("Landing")
 
         function mainStatusText() {
@@ -102,7 +102,7 @@ RowLayout {
                     }
                 }
             } else {
-                _mainStatusBGColor = qgcPal.button
+                _mainStatusBGColor = qgcPal.brandingPurple
                 return mainStatusLabel._disconnectedText
             }
         }
@@ -121,13 +121,13 @@ RowLayout {
         Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * ScreenTools.largeFontPointRatio * 1.5
         height:                 1
     }
+
     FlightModeMenuIndicator {
         id:                     flightModeMenu
         Layout.preferredHeight: _root.height
         fontPointSize:          _vehicleInAir ?  ScreenTools.largeFontPointSize : ScreenTools.defaultFontPointSize
         visible:                _activeVehicle
     }
-    //USER
 
     Item {
         Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * ScreenTools.largeFontPointRatio * 1.5
@@ -202,7 +202,7 @@ RowLayout {
 
                     QGCLabel {
                         Layout.alignment:   Qt.AlignHCenter
-                        text:               qsTr("Status Sensor")
+                        text:               qsTr("Sensor Status")
                         visible:            !_healthAndArmingChecksSupported
                     }
 

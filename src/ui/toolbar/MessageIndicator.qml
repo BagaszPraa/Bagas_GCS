@@ -39,7 +39,7 @@ Item {
     function getMessageColor() {
         if (_activeVehicle) {
             if (_activeVehicle.messageTypeNone)
-                return qgcPal.text
+                return qgcPal.colorGrey
             if (_activeVehicle.messageTypeNormal)
                 return qgcPal.colorBlue;
             if (_activeVehicle.messageTypeWarning)

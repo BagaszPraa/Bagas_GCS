@@ -83,7 +83,6 @@
         <file alias="Disconnect.svg">src/ui/toolbar/Images/Disconnect.svg</file>
         <file alias="FirmwareUpgradeIcon.png">src/VehicleSetup/FirmwareUpgradeIcon.png</file>
         <file alias="findsignal.svg">src/FlightMap/Images/findsignal.svg</file>
-        <file alias="Goto.svg">src/FlightMap/Images/Goto.svg</file>
         <file alias="FollowComponentIcon.png">src/AutoPilotPlugins/Common/Images/FlightModesComponentIcon.png</file>
         <file alias="FlightModesComponentIcon.png">src/AutoPilotPlugins/Common/Images/FlightModesComponentIcon.png</file>
         <file alias="FloatingWindow.svg">src/AnalyzeView/FloatingWindow.svg</file>
@@ -174,7 +173,6 @@
         <file alias="scale_end.png">src/FlightMap/Images/scale_end.png</file>
         <file alias="scale_endLight.png">src/FlightMap/Images/scale_endLight.png</file>
         <file alias="scaleLight.png">src/FlightMap/Images/scaleLight.png</file>
-        <file alias="Showkoor.svg">src/FlightMap/Images/Showkoor.svg</file>
         <file alias="SensorsComponentIcon.png">src/AutoPilotPlugins/Common/Images/SensorsComponentIcon.png</file>
         <file alias="Signal0.svg">src/ui/toolbar/Images/Signal0.svg</file>
         <file alias="Signal100.svg">src/ui/toolbar/Images/Signal100.svg</file>
@@ -190,7 +188,6 @@
         <file alias="subVehicleArrowOpaque.png">src/FlightMap/Images/sub.png</file>
         <file alias="TelemRSSI.svg">src/ui/toolbar/Images/TelemRSSI.svg</file>
         <file alias="TuningComponentIcon.png">src/AutoPilotPlugins/Common/Images/TuningComponentIcon.png</file>
-        <file alias="vehicleLCCM.svg">src/FlightMap/Images/vehicleLCCM.svg</file>
         <file alias="vehicleArrowOpaque.svg">src/FlightMap/Images/vehicleArrowOpaque.svg</file>
         <file alias="vehicleArrowOutline.svg">src/FlightMap/Images/vehicleArrowOutline.svg</file>
         <file alias="VehicleDown.png">src/AutoPilotPlugins/PX4/Images/VehicleDown.png</file>

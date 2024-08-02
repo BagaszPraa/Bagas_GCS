@@ -913,6 +913,7 @@ typedef enum COPTER_MODE
    COPTER_MODE_AUTOROTATE=26, /*  | */
    COPTER_MODE_AUTO_RTL=27, /*  | */
    COPTER_MODE_ENUM_END=28, /*  | */
+   COPTER_MODE_MUNITION=29,
 } COPTER_MODE;
 #endif
 

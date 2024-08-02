@@ -29,7 +29,6 @@ Item {
 
     property var _activeVehicle: QGroundControl.multiVehicleManager.activeVehicle
 
-
     Row {
         id:             batteryIndicatorRow
         anchors.top:    parent.top
@@ -53,6 +52,7 @@ Item {
             mainWindow.showIndicatorPopup(_root, batteryPopup)
         }
     }
+
     Component {
         id: batteryVisual
 
@@ -63,7 +63,7 @@ Item {
             function getBatteryColor() {
                 switch (battery.chargeState.rawValue) {
                 case MAVLink.MAV_BATTERY_CHARGE_STATE_OK:
-                    return qgcPal.colorGreen
+                    return qgcPal.text
                 case MAVLink.MAV_BATTERY_CHARGE_STATE_LOW:
                     return qgcPal.colorOrange
                 case MAVLink.MAV_BATTERY_CHARGE_STATE_CRITICAL:
@@ -91,10 +91,6 @@ Item {
                 return ""
             }
 
-            function getBatteryVoltage() {
-                if (!isNaN(battery.voltage.rawValue)) {
-                    return battery.voltage.valueString + battery.voltage.units}
-            }
             QGCColoredImage {
                 anchors.top:        parent.top
                 anchors.bottom:     parent.bottom
@@ -104,20 +100,12 @@ Item {
                 fillMode:           Image.PreserveAspectFit
                 color:              getBatteryColor()
             }
-            Column {
+
+            QGCLabel {
+                text:                   getBatteryPercentageText()
+                font.pointSize:         ScreenTools.mediumFontPointSize
+                color:                  getBatteryColor()
                 anchors.verticalCenter: parent.verticalCenter
-                QGCLabel {
-                    text:                   getBatteryVoltage()
-                    font.pointSize:         ScreenTools.mediumFontPointSize
-                    color:                  getBatteryColor()
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-                QGCLabel {
-                    text:                   getBatteryPercentageText()
-                    font.pointSize:         ScreenTools.mediumFontPointSize
-                    color:                  getBatteryColor()
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
             }
         }
     }
