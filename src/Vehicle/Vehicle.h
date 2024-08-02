@@ -351,7 +351,6 @@ public:
     Q_INVOKABLE void resetErrorLevelMessages();
 
     Q_INVOKABLE void virtualTabletJoystickValue(double roll, double pitch, double yaw, double thrust);
-    Q_INVOKABLE void virtualRCOverride(double yaw, double thrust);
 
     /// Command vehicle to return to launch
     Q_INVOKABLE void guidedModeRTL(bool smartRTL);
@@ -492,7 +491,6 @@ public:
     bool joystickEnabled            () const;
     void setJoystickEnabled         (bool enabled);
     void sendJoystickDataThreadSafe (float roll, float pitch, float yaw, float thrust, quint16 buttons);
-    void sendRCOverride             (float yaw, float thrust, quint16 buttons);
 
     // Property accesors
     int id() const{ return _id; }

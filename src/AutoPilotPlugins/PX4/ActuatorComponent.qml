@@ -35,7 +35,7 @@ SetupPage {
                     width:                      _leftColumnWidth
                     visible:                    actuators.mixer.groups.count > 0
                     QGCLabel {
-                        text:                   qsTr("Geometri") + (actuators.mixer.title ? ": " + actuators.mixer.title : "")
+                        text:                   qsTr("Geometry") + (actuators.mixer.title ? ": " + actuators.mixer.title : "")
                         font.pointSize:         ScreenTools.mediumFontPointSize
                         Layout.fillWidth:       true
                     }
@@ -173,7 +173,7 @@ SetupPage {
 
                 // actuator testing
                 QGCLabel {
-                    text:               qsTr("Pengujian Aktuator")
+                    text:               qsTr("Actuator Testing")
                     font.pointSize:     ScreenTools.mediumFontPointSize
                 }
 
@@ -192,7 +192,7 @@ SetupPage {
                         }
 
                         QGCLabel {
-                            text: qsTr("Konfigurasikan beberapa output untuk mengujinya.")
+                            text: qsTr("Configure some outputs in order to test them.")
                             visible: actuators.actuatorTest.actuators.count == 0
                         }
 
@@ -229,7 +229,7 @@ SetupPage {
 
                             QGCLabel {
                                 color:  qgcPal.warningText
-                                text: safetySwitch.checked ? qsTr("Hati -hati: slider aktuator diaktifkan") : qsTr("Baling -baling dilepas - mengaktifkan slider")
+                                text: safetySwitch.checked ? qsTr("Careful: Actuator sliders are enabled") : qsTr("Propellers are removed - Enable sliders")
                             }
                         } // Row
 
@@ -318,12 +318,12 @@ SetupPage {
             // Right column
             Column {
                 QGCLabel {
-                    text:               qsTr("Output aktuator")
+                    text:               qsTr("Actuator Outputs")
                     font.pointSize:     ScreenTools.mediumFontPointSize
                     bottomPadding:      ScreenTools.defaultFontPixelHeight
                 }
                 QGCLabel {
-                    text:          qsTr("Satu atau lebih aktuator masih perlu ditugaskan ke output.")
+                    text:          qsTr("One or more actuator still needs to be assigned to an output.")
                     visible:       actuators.hasUnsetRequiredFunctions
                     color:         qgcPal.warningText
                     bottomPadding: ScreenTools.defaultFontPixelHeight
@@ -365,7 +365,7 @@ SetupPage {
                             anchors.right:     parent.right
                             spacing:           _margins
                             QGCButton {
-                                text:          qsTr("Mengidentifikasi dan menugaskan motor")
+                                text:          qsTr("Identify & Assign Motors")
                                 visible:       !actuators.motorAssignmentActive && selActuatorOutput.actuatorOutput.groupsVisible
                                 enabled:       actuators.motorAssignmentEnabled
                                 onClicked: {
@@ -381,7 +381,7 @@ SetupPage {
                                     visible:    false
                                     icon:       StandardIcon.Warning
                                     standardButtons: StandardButton.Yes | StandardButton.No
-                                    title:      qsTr("Identifikasi dan Penugasan Pesanan Motor")
+                                    title:      qsTr("Motor Order Identification and Assignment")
                                     text: actuators.motorAssignmentMessage
                                     onYes: {
                                         console.log(actuators.motorAssignmentActive)
@@ -393,19 +393,19 @@ SetupPage {
                                     visible:    false
                                     icon:       StandardIcon.Critical
                                     standardButtons: StandardButton.Ok
-                                    title:      qsTr("Kesalahan")
+                                    title:      qsTr("Error")
                                     text: actuators.motorAssignmentMessage
                                 }
                             }
                             QGCButton {
-                                text:          qsTr("Spin motor lagi")
+                                text:          qsTr("Spin Motor Again")
                                 visible:       actuators.motorAssignmentActive
                                 onClicked: {
                                     actuators.spinCurrentMotor()
                                 }
                             }
                             QGCButton {
-                                text:          qsTr("Menggugurkan")
+                                text:          qsTr("Abort")
                                 visible:       actuators.motorAssignmentActive
                                 onClicked: {
                                     actuators.abortMotorAssignment()

@@ -8288,7 +8288,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE2": {
@@ -8320,7 +8321,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE3": {
@@ -8352,7 +8354,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE4": {
@@ -8384,7 +8387,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE5": {
@@ -8416,7 +8420,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE6": {
@@ -8448,7 +8453,8 @@
         "5": "Loiter",
         "6": "RTL",
         "7": "Circle",
-        "9": "Land"
+        "9": "Land",
+        "29": "Munition"
       }
     },
     "FLTMODE_CH": {

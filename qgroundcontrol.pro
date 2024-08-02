@@ -26,9 +26,8 @@ message(Qt version $$[QT_VERSION])
 }
 
 include(QGCCommon.pri)
-# USER
-# TARGET   = QGroundControl
-TARGET   = ATBase
+
+TARGET   = QGroundControl
 TEMPLATE = app
 QGCROOT  = $$PWD
 
@@ -61,11 +60,11 @@ WindowsBuild {
 # Branding
 #
 
-QGC_APP_NAME        = "ATBase"
-QGC_ORG_NAME        = "ATBase"
-QGC_ORG_DOMAIN      = "ATBase"
-QGC_APP_DESCRIPTION = "Open source GCS app provided by AeroTerraIndonesia"
-QGC_APP_COPYRIGHT   = "Copyright (C) 2024 AeroTerraIndonesia. All rights reserved."
+QGC_APP_NAME        = "AeroTerraScanGCS"
+QGC_ORG_NAME        = "AeroTerraScan.org"
+QGC_ORG_DOMAIN      = "org.AeroTerraScan"
+QGC_APP_DESCRIPTION = "Open source GCS app provided by AeroTerraScan dev team"
+QGC_APP_COPYRIGHT   = "Copyright (C) 2024 AeroTerraScan Development Team. All rights reserved."
 
 WindowsBuild {
     QGC_INSTALLER_SCRIPT        = "$$SOURCE_DIR\\deploy\\windows\\nullsoft_installer.nsi"

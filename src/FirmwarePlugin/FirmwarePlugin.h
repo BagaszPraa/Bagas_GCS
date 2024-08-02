@@ -147,7 +147,7 @@ public:
     virtual void guidedModeTakeoff(Vehicle* vehicle, double takeoffAltRel);
 
     /// @return The minimum takeoff altitude (relative) for guided takeoff.
-    virtual double minimumTakeoffAltitude(Vehicle* /*vehicle*/) { return 1; }
+    virtual double minimumTakeoffAltitude(Vehicle* /*vehicle*/) { return 10; }
 
     /// @return The maximum horizontal groundspeed for a multirotor.
     virtual double maximumHorizontalSpeedMultirotor(Vehicle* /*vehicle*/) { return NAN; }

@@ -73,17 +73,16 @@ Rectangle {
         QGCToolBarButton {
             id:                     currentButton
             Layout.preferredHeight: viewButtonRow.height
-            icon.source:            "/res/ToolMenu"
-            // icon.source:            "/res/QGCLogoFull"
-            // icon.color:             QGCPalette.text
-            logo:                   false
+            icon.source:            "/res/QGCLogoFull"
+            logo:                   true
             onClicked:              mainWindow.showToolSelectDialog()
-            //USER
         }
+
         MainStatusIndicator {
             Layout.preferredHeight: viewButtonRow.height
             visible:                currentToolbar === flyViewToolbar
         }
+
         QGCButton {
             id:                 disconnectButton
             text:               qsTr("Disconnect")

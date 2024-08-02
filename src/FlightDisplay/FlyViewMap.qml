@@ -370,7 +370,7 @@ FlightMap {
 
             sourceItem: MissionItemIndexLabel {
                 id:         itemIndexLabel
-                label:      qsTr("R", "label item peta point rally")
+                label:      qsTr("R", "rally point map item label")
             }
         }
     }
@@ -392,7 +392,7 @@ FlightMap {
         anchorPoint.y:  sourceItem.height
         sourceItem: Image {
             id: find_emt
-            source: "/qmlimages/Showkoor.svg"
+            source: "/qmlimages/findsignal.svg"
             sourceSize.width: width/5
             sourceSize.height: height/5
             fillMode: Image.PreserveAspectFit
@@ -403,9 +403,9 @@ FlightMap {
                 color: "transparent"
                 Text {
                     text: qsTr("%1").arg(clickMenu.coord)
-                    color: "black"
+                    color: "green"
                     font.bold: true
-                    font.pointSize: 10
+                    font.pointSize: 12
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     anchors.verticalCenter: parent.verticalCenter/2
@@ -460,7 +460,7 @@ FlightMap {
         anchorPoint.y:  sourceItem.height
         sourceItem: Image {
             id: gotoLocationImage
-            source: "/qmlimages/Goto.svg"
+            source: "/qmlimages/findsignal.svg"
             sourceSize.width: width/5
             sourceSize.height: height/5
             fillMode: Image.PreserveAspectFit
@@ -473,7 +473,7 @@ FlightMap {
                     text: qsTr("%1").arg(clickMenu.coord)
                     color: "black"
                     font.bold: true
-                    font.pointSize: 10
+                    font.pointSize: 12
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     anchors.verticalCenter: parent.verticalCenter/2
@@ -583,7 +583,7 @@ FlightMap {
         sourceItem: MissionItemIndexLabel {
             checked:    true
             index:      -1
-            label:      qsTr("ROI di sini "," Jadikan ini wilayah yang menarik")
+            label:      qsTr("ROI here", "Make this a Region Of Interest")
         }
 
         //-- Visibilty controlled by actual state
@@ -619,7 +619,7 @@ FlightMap {
         sourceItem: MissionItemIndexLabel {
             checked:    true
             index:      -1
-            label:      qsTr("Orbit", "Orbit Waypoint")
+            label:      qsTr("Orbit", "Orbit waypoint")
         }
     }
 
@@ -690,7 +690,7 @@ FlightMap {
 
                 QGCButton {
                     Layout.fillWidth: true
-                    text: "Orbit Ke Lokasi Ini"
+                    text: "Orbit at location"
                     visible: globals.guidedControllerFlyView.showOrbit
                     onClicked: {
                         if (clickMenu.opened) {
@@ -703,7 +703,7 @@ FlightMap {
 
                 QGCButton {
                     Layout.fillWidth: true
-                    text: "ROI Ke Lokasi Ini"
+                    text: "ROI at location"
                     visible: globals.guidedControllerFlyView.showROI
                     onClicked: {
                         if (clickMenu.opened) {
@@ -726,29 +726,29 @@ FlightMap {
                     }
                 }
 
-                // QGCButton {
-                //     Layout.fillWidth: true
-                //     text: qsTr("%1 (DSM)").arg(clickMenu.coord)
-                //     visible: globals.guidedControllerFlyView.showSetHome
-                //     // onClicked: {
-                //     //     if (clickMenu.opened) {
-                //     //         clickMenu.close()
-                //     //     }
-                //     //     globals.guidedControllerFlyView.confirmAction(globals.guidedControllerFlyView.actionSetHome, clickMenu.coord)
-                //     // }
-                // }
+                QGCButton {
+                    Layout.fillWidth: true
+                    text: qsTr("%1 (DSM)").arg(clickMenu.coord)
+                    visible: globals.guidedControllerFlyView.showSetHome
+                    // onClicked: {
+                    //     if (clickMenu.opened) {
+                    //         clickMenu.close()
+                    //     }
+                    //     globals.guidedControllerFlyView.confirmAction(globals.guidedControllerFlyView.actionSetHome, clickMenu.coord)
+                    // }
+                }
 
-                // QGCButton {
-                //     Layout.fillWidth: true
-                //     text: qsTr("%1 (DSM)").arg(_activeVehicleCoordinate)
-                //     visible: globals.guidedControllerFlyView.showSetHome
-                //     // onClicked: {
-                //     //     if (clickMenu.opened) {
-                //     //         clickMenu.close()
-                //     //     }
-                //     //     globals.guidedControllerFlyView.confirmAction(globals.guidedControllerFlyView.actionSetHome, clickMenu.coord)
-                //     // }
-                // }
+                QGCButton {
+                    Layout.fillWidth: true
+                    text: qsTr("%1 (DSM)").arg(_activeVehicleCoordinate)
+                    visible: globals.guidedControllerFlyView.showSetHome
+                    // onClicked: {
+                    //     if (clickMenu.opened) {
+                    //         clickMenu.close()
+                    //     }
+                    //     globals.guidedControllerFlyView.confirmAction(globals.guidedControllerFlyView.actionSetHome, clickMenu.coord)
+                    // }
+                }
             }
         }
 

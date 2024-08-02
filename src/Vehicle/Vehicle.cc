@@ -2520,30 +2520,18 @@ void Vehicle::_remoteControlRSSIChanged(uint8_t rssi)
         emit rcRSSIChanged(_rcRSSI);
     }
 }
+
 void Vehicle::virtualTabletJoystickValue(double roll, double pitch, double yaw, double thrust)
 {
     // The following if statement prevents the virtualTabletJoystick from sending values if the standard joystick is enabled
     if (!_joystickEnabled) {
         sendJoystickDataThreadSafe(
-            static_cast<float>(roll),
-            static_cast<float>(pitch),
-            static_cast<float>(yaw),
-            static_cast<float>(thrust),
-            0);
+                    static_cast<float>(roll),
+                    static_cast<float>(pitch),
+                    static_cast<float>(yaw),
+                    static_cast<float>(thrust),
+                    0);
     }
-    ///USER (RCOVERRIDE)
-}
-
-void Vehicle::virtualRCOverride(double yaw, double thrust)
-{
-    // The following if statement prevents the virtualTabletJoystick from sending values if the standard joystick is enabled
-    if (!_joystickEnabled) {
-        sendRCOverride(
-            static_cast<float>(yaw),
-            static_cast<float>(thrust),
-            0);
-    }
-    ///USER (RCOVERRIDE)
 }
 
 void Vehicle::_say(const QString& text)
@@ -4430,7 +4418,9 @@ void Vehicle::clearAllParamMapRC(void)
         qCDebug(VehicleLog)<< "clearAllParamMapRC: primary link gone!";
         return;
     }
+
     char param_id_cstr[MAVLINK_MSG_PARAM_MAP_RC_FIELD_PARAM_ID_LEN] = {};
+
     for (int i = 0; i < 3; i++) {
         mavlink_message_t message;
         mavlink_msg_param_map_rc_pack_chan(static_cast<uint8_t>(_mavlink->getSystemId()),
@@ -4445,84 +4435,6 @@ void Vehicle::clearAllParamMapRC(void)
                                            0, 0, 0, 0);                                         // unused
         sendMessageOnLinkThreadSafe(sharedLink.get(), message);
     }
-}
-void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
-{
-    SharedLinkInterfacePtr sharedLink = vehicleLinkManager()->primaryLink().lock();
-    if (!sharedLink) {
-        qCDebug(VehicleLog) << "sendJoystickDataThreadSafe: primary link gone!";
-        return;
-    }
-
-    if (sharedLink->linkConfiguration()->isHighLatency()) {
-        return;
-    }
-
-    mavlink_message_t message;
-    float minValue = 1100.0;
-    float maxValue = 1900.0;
-    float midValue = (minValue + maxValue) / 2.0;  // 1500
-    float range = (maxValue - minValue) / 2.0;     // 400
-    float newThrustCommand  = midValue + (thrust * range);
-    // Incoming values are in the range -1:1, scaling to 1000-2000
-    // float axesScaling = 500.0;  // Scale -1:1 to -500:500
-    // float baseValue = 1500.0;   // Center value for RC channels
-
-    // float newRollCommand    = baseValue + (roll * axesScaling);
-    // float newPitchCommand   = baseValue + (pitch * axesScaling);
-    // float newYawCommand     = baseValue + (yaw * axesScaling);
-    // float newThrustCommand  = baseValue + (thrust * axesScaling);
-    // Additional channels can be added here as needed
-    // For this example, we are only using the first 4 channels and setting the rest to 0 or a default value
-    uint16_t channelValues[19] = {0};
-    channelValues[0] = 0;
-    channelValues[1] = 0;
-    channelValues[2] = 0;
-    channelValues[3] = 0;
-    channelValues[4] = 0; // Replace with actual value if needed
-    channelValues[5] = 0; // Replace with actual value if needed
-    channelValues[6] = 0; // Replace with actual value if needed
-    channelValues[7] = 0; // Replace with actual value if needed
-    channelValues[8] = 0; // Replace with actual value if needed
-    channelValues[9] = 0; // Replace with actual value if needed
-    channelValues[10] = 0; // Replace with actual value if needed
-    channelValues[11] = 0; // Replace with actual value if needed
-    channelValues[12] = 0; // Replace with actual value if needed
-    channelValues[13] = 0; // Replace with actual value if needed
-    channelValues[14] = 0; // Replace with actual value if needed
-    channelValues[15] = 0; // Assuming buttons are sent in the last channel
-    channelValues[16] = static_cast<uint16_t>(newThrustCommand); // Assuming buttons are sent in the last channel
-    channelValues[17] = 0; // Assuming buttons are sent in the last channel
-    channelValues[18] = 0; // Assuming buttons are sent in the last channel
-
-    // Pack RC_CHANNELS_OVERRIDE message with all 16 channels
-    mavlink_msg_rc_channels_override_pack_chan(
-        static_cast<uint8_t>(_mavlink->getSystemId()),
-        static_cast<uint8_t>(_mavlink->getComponentId()),
-        sharedLink->mavlinkChannel(),
-        &message,
-        static_cast<uint8_t>(_id),
-        channelValues[0],
-        channelValues[1],
-        channelValues[2],
-        channelValues[3],
-        channelValues[4],
-        channelValues[5],
-        channelValues[6],
-        channelValues[7],
-        channelValues[8],
-        channelValues[9],
-        channelValues[10],
-        channelValues[11],
-        channelValues[12],
-        channelValues[13],
-        channelValues[14],
-        channelValues[15],
-        channelValues[16],
-        channelValues[17],
-        channelValues[18]);
-
-    sendMessageOnLinkThreadSafe(sharedLink.get(), message);
 }
 
 void Vehicle::sendJoystickDataThreadSafe(float roll, float pitch, float yaw, float thrust, quint16 buttons)
@@ -4540,23 +4452,24 @@ void Vehicle::sendJoystickDataThreadSafe(float roll, float pitch, float yaw, flo
     mavlink_message_t message;
 
     // Incoming values are in the range -1:1
-    float axesScaling       = 1.0 * 1000.0;
-    float newRollCommand    = roll * axesScaling;
-    float newPitchCommand   = pitch * axesScaling;    // Joystick data is reverse of mavlink values
-    float newYawCommand     = yaw * axesScaling;
-    float newThrustCommand  = thrust * axesScaling;
+    float axesScaling =         1.0 * 1000.0;
+    float newRollCommand =      roll * axesScaling;
+    float newPitchCommand  =    pitch * axesScaling;    // Joystick data is reverse of mavlink values
+    float newYawCommand    =    yaw * axesScaling;
+    float newThrustCommand =    thrust * axesScaling;
+
     mavlink_msg_manual_control_pack_chan(
-        static_cast<uint8_t>(_mavlink->getSystemId()),
-        static_cast<uint8_t>(_mavlink->getComponentId()),
-        sharedLink->mavlinkChannel(),
-        &message,
-        static_cast<uint8_t>(_id),
-        static_cast<int16_t>(newPitchCommand),
-        static_cast<int16_t>(newRollCommand),
-        static_cast<int16_t>(newThrustCommand),
-        static_cast<int16_t>(newYawCommand),
-        buttons,
-        0, 0, 0, 0);
+                static_cast<uint8_t>(_mavlink->getSystemId()),
+                static_cast<uint8_t>(_mavlink->getComponentId()),
+                sharedLink->mavlinkChannel(),
+                &message,
+                static_cast<uint8_t>(_id),
+                static_cast<int16_t>(newPitchCommand),
+                static_cast<int16_t>(newRollCommand),
+                static_cast<int16_t>(newThrustCommand),
+                static_cast<int16_t>(newYawCommand),
+                buttons,
+                0, 0, 0, 0);
     sendMessageOnLinkThreadSafe(sharedLink.get(), message);
 }
 

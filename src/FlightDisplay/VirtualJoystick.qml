@@ -28,9 +28,7 @@ Item {
         repeat:     true
         onTriggered: {
             if (_activeVehicle) {
-                _activeVehicle.virtualRCOverride(leftStick.xAxis, leftStick.yAxis)
-                // _activeVehicle.virtualTabletJoystickValue(rightStick.xAxis, rightStick.yAxis, leftStick.xAxis, leftStick.yAxis)
-                ///USER (RCOVERRIDE)
+                _activeVehicle.virtualTabletJoystickValue(rightStick.xAxis, rightStick.yAxis, leftStick.xAxis, leftStick.yAxis)
             }
         }
     }
@@ -43,17 +41,17 @@ Item {
         anchors.bottom:         parent.bottom
         width:                  parent.height
         height:                 parent.height
-        // yAxisPositiveRangeOnly: _activeVehicle && !_activeVehicle.rover
+        yAxisPositiveRangeOnly: _activeVehicle && !_activeVehicle.rover
         yAxisReCenter:          autoCenterThrottle
     }
 
-    // JoystickThumbPad {
-    //     id:                     rightStick
-    //     anchors.rightMargin:    -xPositionDelta
-    //     anchors.bottomMargin:   -yPositionDelta
-    //     anchors.right:          parent.right
-    //     anchors.bottom:         parent.bottom
-    //     width:                  parent.height
-    //     height:                 parent.height
-    // }
+    JoystickThumbPad {
+        id:                     rightStick
+        anchors.rightMargin:    -xPositionDelta
+        anchors.bottomMargin:   -yPositionDelta
+        anchors.right:          parent.right
+        anchors.bottom:         parent.bottom
+        width:                  parent.height
+        height:                 parent.height
+    }
 }

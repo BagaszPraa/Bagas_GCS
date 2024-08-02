@@ -32,10 +32,10 @@ Rectangle {
     readonly property real      _horizontalMargin:  _defaultTextWidth / 2
     readonly property real      _verticalMargin:    _defaultTextHeight / 2
     readonly property real      _buttonWidth:       _defaultTextWidth * 18
-    readonly property string    _armedVehicleText:  qsTr("Operasi ini tidak dapat dilakukan saat kendaraan bersenjata.")
+    readonly property string    _armedVehicleText:  qsTr("This operation cannot be performed while the vehicle is armed.")
 
     property bool   _vehicleArmed:                  QGroundControl.multiVehicleManager.activeVehicle ? QGroundControl.multiVehicleManager.activeVehicle.armed : false
-    property string _messagePanelText:              qsTr("Teks Panel Pesan yang Hilang")
+    property string _messagePanelText:              qsTr("missing message panel text")
     property bool   _fullParameterVehicleAvailable: QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable && !QGroundControl.multiVehicleManager.activeVehicle.parameterManager.missingParameters
     property var    _corePlugin:                    QGroundControl.corePlugin
 
@@ -77,7 +77,7 @@ Rectangle {
         var autopilotPlugin = QGroundControl.multiVehicleManager.activeVehicle.autopilot
         var prereq = autopilotPlugin.prerequisiteSetup(vehicleComponent)
         if (prereq !== "") {
-            _messagePanelText = qsTr("pengaturan %1 harus diselesaikan sebelum pengaturan %2. ").arg(prereq).arg(vehicleComponent.name)
+            _messagePanelText = qsTr("%1 setup must be completed prior to %2 setup.").arg(prereq).arg(vehicleComponent.name)
             panelLoader.setSourceComponent(messagePanelComponent)
         } else {
             panelLoader.setSource(vehicleComponent.setupSource, vehicleComponent)
@@ -129,8 +129,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.mediumFontPointSize
-                text:                   qsTr("Saat ini %1 tidak mendukung pengaturan jenis kendaraan Anda. ").arg(QGroundControl.appName) +
-                                        "Jika kendaraan Anda sudah dikonfigurasi, Anda masih bisa terbang."
+                text:                   qsTr("%1 does not currently support setup of your vehicle type. ").arg(QGroundControl.appName) +
+                                        "If your vehicle is already configured you can still Fly."
                 onLinkActivated: Qt.openUrlExternally(link)
             }
         }
@@ -147,8 +147,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.largeFontPointSize
-                text:                   qsTr("Pengaturan dan info kendaraan akan ditampilkan setelah menghubungkan kendaraan Anda.") +
-                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " Klik Firmware di sebelah kiri untuk meningkatkan kendaraan Anda.")
+                text:                   qsTr("Vehicle settings and info will display after connecting your vehicle.") +
+                                        (ScreenTools.isMobile || !_corePlugin.options.showFirmwareUpgrade ? "" : " Click Firmware on the left to upgrade your vehicle.")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -168,8 +168,8 @@ Rectangle {
                 horizontalAlignment:    Text.AlignHCenter
                 wrapMode:               Text.WordWrap
                 font.pointSize:         ScreenTools.mediumFontPointSize
-                text:                   qsTr("Anda saat ini terhubung ke kendaraan tetapi tidak mengembalikan daftar parameter lengkap.") +
-                                        qsTr("Akibatnya, set lengkap opsi pengaturan kendaraan tidak tersedia.")
+                text:                   qsTr("You are currently connected to a vehicle but it did not return the full parameter list. ") +
+                                        qsTr("As a result, the full set of vehicle setup options are not available.")
 
                 onLinkActivated: Qt.openUrlExternally(link)
             }
@@ -294,7 +294,7 @@ Rectangle {
                 visible:            QGroundControl.multiVehicleManager.parameterReadyVehicleAvailable &&
                                     !QGroundControl.multiVehicleManager.activeVehicle.usingHighLatencyLink &&
                                     _corePlugin.showAdvancedUI
-                text:               qsTr("Parameter")
+                text:               qsTr("Parameters")
                 Layout.fillWidth:   true
                 onClicked:          showPanel(this, "SetupParameterEditor.qml")
             }

@@ -208,12 +208,12 @@ ApplicationWindow {
     //  Pending parameter writes - then
     //  Active connections
 
-    property string closeDialogTitle: qsTr("Tutup %1").arg(QGroundControl.appName)
+    property string closeDialogTitle: qsTr("Close %1").arg(QGroundControl.appName)
 
     function checkForUnsavedMission() {
         if (globals.planMasterControllerPlanView && globals.planMasterControllerPlanView.dirty) {
             showMessageDialog(closeDialogTitle,
-                              qsTr("Anda memiliki edit misi yang sedang berlangsung yang belum disimpan/dikirim.Jika Anda tutup, Anda akan kehilangan perubahan.Apakah Anda yakin ingin menutup?"),
+                              qsTr("You have a mission edit in progress which has not been saved/sent. If you close you will lose changes. Are you sure you want to close?"),
                               StandardButton.Yes | StandardButton.No,
                               function() { checkForPendingParameterWrites() })
         } else {
@@ -225,7 +225,7 @@ ApplicationWindow {
         for (var index=0; index<QGroundControl.multiVehicleManager.vehicles.count; index++) {
             if (QGroundControl.multiVehicleManager.vehicles.get(index).parameterManager.pendingWrites) {
                 mainWindow.showMessageDialog(closeDialogTitle,
-                    qsTr("Anda memiliki pembaruan parameter yang tertunda untuk kendaraan.Jika Anda tutup, Anda akan kehilangan perubahan.Apakah Anda yakin ingin menutup?"),
+                    qsTr("You have pending parameter updates to a vehicle. If you close you will lose changes. Are you sure you want to close?"),
                     StandardButton.Yes | StandardButton.No,
                     function() { checkForActiveConnections() })
                 return
@@ -237,7 +237,7 @@ ApplicationWindow {
     function checkForActiveConnections() {
         if (QGroundControl.multiVehicleManager.activeVehicle) {
             mainWindow.showMessageDialog(closeDialogTitle,
-                qsTr("Masih ada koneksi aktif ke kendaraan.Apakah Anda yakin ingin keluar?"),
+                qsTr("There are still active connections to vehicles. Are you sure you want to exit?"),
                 StandardButton.Yes | StandardButton.No,
                 function() { finishCloseProcess() })
         } else {
@@ -334,9 +334,8 @@ ApplicationWindow {
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
                         text:               qsTr("Application Settings")
-                        // imageResource:      "/res/ToolMenu"
                         imageResource:      "/res/QGCLogoFull"
-                        imageColor:         qgcPal.text
+                        imageColor:         "transparent"
                         visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup
                         onClicked: {
                             if (!mainWindow.preventViewSwitch()) {
@@ -361,7 +360,7 @@ ApplicationWindow {
                         }
 
                         QGCLabel {
-                            text:                   qsTr("Aeroterra Indonesia")
+                            text:                   qsTr("Copyright, 2024")
                             font.pointSize:         ScreenTools.smallFontPointSize
                             wrapMode:               QGCLabel.WrapAnywhere
                             Layout.maximumWidth:    parent.width
@@ -582,7 +581,7 @@ ApplicationWindow {
                 QGCLabel {
                     id:                 vehicleWarningLabel
                     anchors.centerIn:   parent
-                    text:               qsTr("Kesalahan kendaraan")
+                    text:               qsTr("Vehicle Error")
                     font.pointSize:     ScreenTools.smallFontPointSize
                     color:              qgcPal.alertText
                 }
@@ -606,7 +605,7 @@ ApplicationWindow {
                 QGCLabel {
                     id:                 additionalErrorsLabel
                     anchors.centerIn:   parent
-                    text:               qsTr("Kesalahan tambahan yang diterima")
+                    text:               qsTr("Additional errors received")
                     font.pointSize:     ScreenTools.smallFontPointSize
                     color:              qgcPal.alertText
                 }

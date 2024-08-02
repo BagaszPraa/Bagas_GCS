@@ -42,8 +42,7 @@ Rectangle {
         anchors.top:            parent.bottom
         width:                  parent.height
         font.pointSize:         ScreenTools.smallFontPointSize
-        text:                   qsTr("Ketinggian AMSL (%1)").arg(_unitsConversion.appSettingsHorizontalDistanceUnitsString)
-        color:                  qgcPal.text
+        text:                   qsTr("Height AMSL (%1)").arg(_unitsConversion.appSettingsHorizontalDistanceUnitsString)
         horizontalAlignment:    Text.AlignHCenter
         rotation:               -90
         transformOrigin:        Item.TopLeft
@@ -80,9 +79,9 @@ Rectangle {
                     lineVisible:                true
                     labelsFont.family:          "Fixed"
                     labelsFont.pointSize:       ScreenTools.smallFontPointSize
-                    labelsColor:                qgcPal.text
+                    labelsColor:                "white"
                     tickCount:                  5
-                    gridLineColor:              qgcPal.text
+                    gridLineColor:              "#44FFFFFF"
                 }
 
                 ValueAxis {
@@ -92,9 +91,9 @@ Rectangle {
                     lineVisible:                true
                     labelsFont.family:          "Fixed"
                     labelsFont.pointSize:       ScreenTools.smallFontPointSize
-                    labelsColor:                qgcPal.text
+                    labelsColor:                "white"
                     tickCount:                  4
-                    gridLineColor:              qgcPal.text
+                    gridLineColor:              "#44FFFFFF"
                 }
 
                 LineSeries {
@@ -128,7 +127,7 @@ Rectangle {
                             id:         simpleItem
                             height:     terrainProfile.height
                             width:      1
-                            color:      qgcPal.text
+                            color:      "white"
                             x:          (object.distanceFromStart * terrainProfile.pixelsPerMeter)
                             visible:    object.isSimpleItem || object.isSingleItem
 
@@ -147,7 +146,7 @@ Rectangle {
                             id:         complexItemEntry
                             height:     terrainProfile.height
                             width:      1
-                            color:      qgcPal.text
+                            color:      "white"
                             x:          (object.distanceFromStart * terrainProfile.pixelsPerMeter)
                             visible:    complexItem.visible
 
@@ -165,7 +164,7 @@ Rectangle {
                             id:         complexItemExit
                             height:     terrainProfile.height
                             width:      1
-                            color:      qgcPal.text
+                            color:      "white"
                             x:          ((object.distanceFromStart + object.complexDistance) * terrainProfile.pixelsPerMeter)
                             visible:    complexItem.visible
 
