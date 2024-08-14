@@ -8,6 +8,7 @@
  ****************************************************************************/
 
 import QtQuick 2.12
+import QtQuick.Controls                 2.12
 
 import QGroundControl               1.0
 import QGroundControl.Controls      1.0
@@ -69,13 +70,11 @@ Item {
         font.pointSize: ScreenTools.largeFontPointSize
         visible: QGroundControl.videoManager.fullScreen && flyViewVideoMouseArea.containsMouse
         anchors.centerIn: parent
-
         onVisibleChanged: {
             if (visible) {
                 labelAnimation.start()
             }
         }
-
         PropertyAnimation on opacity {
             id: labelAnimation
             duration: 10000
@@ -87,11 +86,67 @@ Item {
 
     MouseArea {
         id: flyViewVideoMouseArea
-        anchors.fill:       parent
-        enabled:            pipState.state === pipState.fullState
+        anchors.fill: parent
+        enabled: pipState.state === pipState.fullState
         hoverEnabled: true
-        onDoubleClicked:    QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
+        onDoubleClicked: QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
+        Rectangle {
+            id: pembatas
+            anchors.centerIn: parent
+            width: parent.width * 0.90
+            height: parent.height
+            border.color: "green"
+            border.width: 5
+            color: "transparent"
+            Rectangle {
+                id: roiSelector
+                color: "transparent"
+                border.color: "blue"
+                border.width: 5
+                width: 100
+                height: 100
+                visible: false
+                onXChanged: {
+                    if (x < 0) x = 0;
+                    if (x + width > parent.width) x = parent.width - width;
+                }
+                onYChanged: {
+                    if (y < 0) y = 0;
+                    if (y + height > parent.height) y = parent.height - height;
+                }
+            }
+            MouseArea {
+                id: mouseArea
+                anchors.fill: parent
+                property bool selecting: false
+                onPressed: {
+                    selecting = true;
+                    roiSelector.x = mouse.x - roiSelector.width / 2;
+                    roiSelector.y = mouse.y - roiSelector.height / 2;
+                    roiSelector.visible = true;
+                    console.log(qsTr("Pressed"))
+                }
+                onPositionChanged: {
+                    if (selecting) {
+                        roiSelector.x = mouse.x - roiSelector.width / 2;
+                        roiSelector.y = mouse.y - roiSelector.height / 2;
+                        console.log(qsTr("Dragged"))
+                    }
+                }
+                onReleased: {
+                    selecting = false;
+                    roiSelector.visible = false;
+                    console.log(qsTr("%1,%2,%3,%4")
+                            .arg(roiSelector.x)
+                            .arg(roiSelector.y)
+                            .arg(roiSelector.width)
+                            .arg(roiSelector.height));
+                    // console.log(qsTr("Released"))
+                }
+            }
+        }
     }
+
 
     ProximityRadarVideoView{
         anchors.fill:   parent

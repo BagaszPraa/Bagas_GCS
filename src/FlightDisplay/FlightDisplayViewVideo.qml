@@ -89,7 +89,6 @@ Item {
             QGCVideoBackground {
                 id:             videoContent
                 objectName:     "videoContent"
-
                 Connections {
                     target: QGroundControl.videoManager
                     function onImageFileChanged() {
@@ -99,6 +98,15 @@ Item {
                             }
                         });
                     }
+                }
+                Rectangle {
+                    id : pembatas
+                    anchors.centerIn: parent
+                    width: parent.width
+                    height: parent.height
+                    border.color: "red"
+                    border.width: 3
+                    color: "transparent"
                 }
                 Rectangle {
                     color:  Qt.rgba(1,1,1,0.5)
