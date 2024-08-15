@@ -64,9 +64,6 @@ Item {
         visible:        !QGroundControl.videoManager.isGStreamer
         source:         QGroundControl.videoManager.uvcEnabled ? "qrc:/qml/FlightDisplayViewUVC.qml" : "qrc:/qml/FlightDisplayViewDummy.qml"
     }
-    // roiSender{
-    //     id : roiSender
-    // }
     ROIsender{
         id : roisender
     }
@@ -101,8 +98,8 @@ Item {
             anchors.centerIn: parent
             width: parent.width * 0.90
             height: parent.height
-            border.color: "green"
-            border.width: 5
+            // border.color: "green"
+            // border.width: 5
             color: "transparent"
             ////SKALA PIXEL TARGET
             property int targetWidth: 640
@@ -139,20 +136,19 @@ Item {
                     roiSelector.x = mouse.x - roiSelector.width / 2;
                     roiSelector.y = mouse.y - roiSelector.height / 2;
                     roiSelector.visible = true;
-                    console.log(qsTr("Pressed"))
                 }
                 onPositionChanged: {
                     if (selecting) {
                         roiSelector.x = mouse.x - roiSelector.width / 2;
                         roiSelector.y = mouse.y - roiSelector.height / 2;
                         // console.log(qsTr("Dragged"))
-                        let logData = qsTr("%1,%2,%3,%4")
-                                    .arg(pembatas.convertedX)
-                                    .arg(pembatas.convertedY)
-                                    .arg(pembatas.convertedWidth)
-                                    .arg(pembatas.convertedHeight);
-                        // roisender.sendData(logData);
-                        console.log(logData);
+                        // let logData = qsTr("%1,%2,%3,%4")
+                        //             .arg(pembatas.convertedX)
+                        //             .arg(pembatas.convertedY)
+                        //             .arg(pembatas.convertedWidth)
+                        //             .arg(pembatas.convertedHeight);
+                        // // roisender.sendData(logData);
+                        // console.log(logData);
                         // console.log(qsTr("width=%1 height=%2 scaleX=%3 scaleY=%4")
                         //             .arg(pembatas.width)
                         //             .arg(pembatas.height)
@@ -171,11 +167,6 @@ Item {
                                 .arg(pembatas.convertedHeight);
                     roisender.sendData(logData);
                     console.log(logData);
-                    // console.log(qsTr("%1,%2,%3,%4")
-                    //         .arg(parent.convertedX)
-                    //         .arg(parent.convertedY)
-                    //         .arg(parent.convertedWidth)
-                    //         .arg(parent.convertedHeight))
                 }
             }
         }

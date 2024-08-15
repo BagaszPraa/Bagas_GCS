@@ -44,7 +44,6 @@ Item {
             source:         "/res/NoVideoBackground.jpg"
             fillMode:       Image.PreserveAspectCrop
             visible:        !(QGroundControl.videoManager.decoding)
-
             // Rectangle {
             //     anchors.centerIn:   parent
             //     width:              noVideoLabel.contentWidth + ScreenTools.defaultFontPixelHeight
@@ -53,7 +52,6 @@ Item {
             //     color:              "black"
             //     opacity:            0.5
             // }
-
             // QGCLabel {
             //     id:                 noVideoLabel
             //     text:               QGroundControl.settingsManager.videoSettings.streamEnabled.rawValue ? qsTr("HAHAHAHAH") : qsTr("VIDEO DISABLED")
@@ -99,15 +97,15 @@ Item {
                         });
                     }
                 }
-                Rectangle {
-                    id : pembatas
-                    anchors.centerIn: parent
-                    width: parent.width
-                    height: parent.height
-                    border.color: "red"
-                    border.width: 3
-                    color: "transparent"
-                }
+                // Rectangle {
+                //     id : pembatas
+                //     anchors.centerIn: parent
+                //     width: parent.width
+                //     height: parent.height
+                //     border.color: "red"
+                //     border.width: 3
+                //     color: "transparent"
+                // }
                 Rectangle {
                     color:  Qt.rgba(1,1,1,0.5)
                     height: parent.height
