@@ -104,12 +104,13 @@ Item {
             border.color: "green"
             border.width: 5
             color: "transparent"
+            ////SKALA PIXEL TARGET
             property int targetWidth: 640
-            property int targetHeight: 480
+            property int targetHeight: 360
             property real scaleX: targetWidth / width
             property real scaleY: targetHeight / height
             property real convertedX: Math.round(roiSelector.x * scaleX)
-            property real convertedY: Math.round(roiSelector.x * scaleY)
+            property real convertedY: Math.round(roiSelector.y * scaleY)
             property real convertedWidth: Math.round(roiSelector.width * scaleX)
             property real convertedHeight: Math.round(roiSelector.height * scaleY)
             Rectangle {
@@ -144,7 +145,20 @@ Item {
                     if (selecting) {
                         roiSelector.x = mouse.x - roiSelector.width / 2;
                         roiSelector.y = mouse.y - roiSelector.height / 2;
-                        console.log(qsTr("Dragged"))
+                        // console.log(qsTr("Dragged"))
+                        let logData = qsTr("%1,%2,%3,%4")
+                                    .arg(pembatas.convertedX)
+                                    .arg(pembatas.convertedY)
+                                    .arg(pembatas.convertedWidth)
+                                    .arg(pembatas.convertedHeight);
+                        // roisender.sendData(logData);
+                        console.log(logData);
+                        // console.log(qsTr("width=%1 height=%2 scaleX=%3 scaleY=%4")
+                        //             .arg(pembatas.width)
+                        //             .arg(pembatas.height)
+                        //             .arg(pembatas.scaleX)
+                        //             .arg(pembatas.scaleY)
+                        //             )
                     }
                 }
                 onReleased: {
