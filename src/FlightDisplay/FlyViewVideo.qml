@@ -14,11 +14,11 @@ import QGroundControl               1.0
 import QGroundControl.Controls      1.0
 import QGroundControl.Controllers   1.0
 import QGroundControl.ScreenTools   1.0
+import customcontrols               1.0
 
 Item {
     id:         _root
     visible:    QGroundControl.videoManager.hasVideo
-
     property Item pipState: videoPipState
     QGCPipState {
         id:         videoPipState
@@ -63,6 +63,12 @@ Item {
         anchors.fill:   parent
         visible:        !QGroundControl.videoManager.isGStreamer
         source:         QGroundControl.videoManager.uvcEnabled ? "qrc:/qml/FlightDisplayViewUVC.qml" : "qrc:/qml/FlightDisplayViewDummy.qml"
+    }
+    // roiSender{
+    //     id : roiSender
+    // }
+    ROIsender{
+        id : roisender
     }
 
     QGCLabel {
@@ -144,24 +150,22 @@ Item {
                 onReleased: {
                     selecting = false;
                     roiSelector.visible = false;
-                    console.log(qsTr("%1,%2,%3,%4")
-                            .arg(parent.convertedX)
-                            .arg(parent.convertedY)
-                            .arg(parent.convertedWidth)
-                            .arg(parent.convertedHeight))
+                    let logData = qsTr("%1,%2,%3,%4")
+                                .arg(pembatas.convertedX)
+                                .arg(pembatas.convertedY)
+                                .arg(pembatas.convertedWidth)
+                                .arg(pembatas.convertedHeight);
+                    roisender.sendData(logData);
+                    console.log(logData);
                     // console.log(qsTr("%1,%2,%3,%4")
-                    //         .arg(roiSelector.x)
-                    //         .arg(roiSelector.y)
-                    //         .arg(roiSelector.width)
-                    //         .arg(roiSelector.height))
-                    // console.log(qsTr("X = %1 Y = %2")
-                    //             .arg(parent.convertedX)
-                    //             .arg(parent.convertedY))
+                    //         .arg(parent.convertedX)
+                    //         .arg(parent.convertedY)
+                    //         .arg(parent.convertedWidth)
+                    //         .arg(parent.convertedHeight))
                 }
             }
         }
     }
-
 
     ProximityRadarVideoView{
         anchors.fill:   parent

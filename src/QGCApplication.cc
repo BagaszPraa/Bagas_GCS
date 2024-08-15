@@ -105,6 +105,7 @@
 #include "RemoteIDManager.h"
 #include "CustomAction.h"
 #include "CustomActionManager.h"
+#include "roisender.h"
 
 #if defined(QGC_ENABLE_PAIRING)
 #include "PairingManager.h"
@@ -517,10 +518,11 @@ void QGCApplication::_initCommon()
     qmlRegisterType<RCToParamDialogController>      (kQGCControllers,                       1, 0, "RCToParamDialogController");
     qmlRegisterType<CustomAction>                   (kQGCControllers,                       1, 0, "CustomAction");
     qmlRegisterType<CustomActionManager>            (kQGCControllers,                       1, 0, "CustomActionManager");
-
+    // qmlRegisterType<roiSender>
     qmlRegisterType<TerrainProfile>                 ("QGroundControl.Controls",             1, 0, "TerrainProfile");
     qmlRegisterType<ToolStripAction>                ("QGroundControl.Controls",             1, 0, "ToolStripAction");
     qmlRegisterType<ToolStripActionList>            ("QGroundControl.Controls",             1, 0, "ToolStripActionList");
+    qmlRegisterType<roiSender>                      ("customcontrols",                      1, 0, "ROIsender");
 
 #ifndef __mobile__
 #ifndef NO_SERIAL_LINK
