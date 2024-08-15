@@ -98,6 +98,14 @@ Item {
             border.color: "green"
             border.width: 5
             color: "transparent"
+            property int targetWidth: 640
+            property int targetHeight: 480
+            property real scaleX: targetWidth / width
+            property real scaleY: targetHeight / height
+            property real convertedX: Math.round(roiSelector.x * scaleX)
+            property real convertedY: Math.round(roiSelector.x * scaleY)
+            property real convertedWidth: Math.round(roiSelector.width * scaleX)
+            property real convertedHeight: Math.round(roiSelector.height * scaleY)
             Rectangle {
                 id: roiSelector
                 color: "transparent"
@@ -137,11 +145,18 @@ Item {
                     selecting = false;
                     roiSelector.visible = false;
                     console.log(qsTr("%1,%2,%3,%4")
-                            .arg(roiSelector.x)
-                            .arg(roiSelector.y)
-                            .arg(roiSelector.width)
-                            .arg(roiSelector.height));
-                    // console.log(qsTr("Released"))
+                            .arg(parent.convertedX)
+                            .arg(parent.convertedY)
+                            .arg(parent.convertedWidth)
+                            .arg(parent.convertedHeight))
+                    // console.log(qsTr("%1,%2,%3,%4")
+                    //         .arg(roiSelector.x)
+                    //         .arg(roiSelector.y)
+                    //         .arg(roiSelector.width)
+                    //         .arg(roiSelector.height))
+                    // console.log(qsTr("X = %1 Y = %2")
+                    //             .arg(parent.convertedX)
+                    //             .arg(parent.convertedY))
                 }
             }
         }
