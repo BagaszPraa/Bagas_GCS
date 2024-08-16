@@ -102,8 +102,8 @@ Item {
             // border.width: 5
             color: "transparent"
             ////SKALA PIXEL TARGET
-            property int targetWidth: 640
-            property int targetHeight: 360
+            property int targetWidth: 320
+            property int targetHeight: 180
             property real scaleX: targetWidth / width
             property real scaleY: targetHeight / height
             property real convertedX: Math.round(roiSelector.x * scaleX)
@@ -115,8 +115,8 @@ Item {
                 color: "transparent"
                 border.color: "blue"
                 border.width: 5
-                width: 100
-                height: 100
+                width: parent.targetWidth / 2
+                height: parent.targetHeight / 2
                 visible: false
                 onXChanged: {
                     if (x < 0) x = 0;

@@ -3,7 +3,7 @@
 roiSender::roiSender(QObject *parent) : QObject(parent)
 {
     tcpSocket = new QTcpSocket(this);
-    tcpSocket->connectToHost("127.0.0.1", 6000);  // Ganti dengan IP dan port server tujuan
+    tcpSocket->connectToHost("192.168.168.105", 6000);  // Ganti dengan IP dan port server tujuan
 }
 
 void roiSender::sendData(const QString &data)
