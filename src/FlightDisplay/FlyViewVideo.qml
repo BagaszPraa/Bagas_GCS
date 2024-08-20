@@ -166,7 +166,7 @@ Item {
                                 .arg(pembatas.convertedWidth)
                                 .arg(pembatas.convertedHeight);
                     roisender.sendData(logData);
-                    console.log(logData);
+                    // console.log(logData);
                 }
             }
         }

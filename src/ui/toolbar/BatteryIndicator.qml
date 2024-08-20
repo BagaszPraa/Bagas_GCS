@@ -93,7 +93,8 @@ Item {
 
             function getBatteryVoltage() {
                 if (!isNaN(battery.voltage.rawValue)) {
-                    return battery.voltage.valueString + battery.voltage.units}
+                    return battery.voltage.valueString}
+                    // return battery.voltage.valueString + battery.voltage.units}
             }
             QGCColoredImage {
                 anchors.top:        parent.top
@@ -107,7 +108,7 @@ Item {
             Column {
                 anchors.verticalCenter: parent.verticalCenter
                 QGCLabel {
-                    text:                   getBatteryVoltage()
+                    text:                   getBatteryVoltage() + qsTr(" V")
                     font.pointSize:         ScreenTools.mediumFontPointSize
                     color:                  getBatteryColor()
                     anchors.horizontalCenter: parent.horizontalCenter
