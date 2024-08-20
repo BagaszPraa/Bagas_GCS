@@ -393,13 +393,13 @@ FlightMap {
         sourceItem: Image {
             id: find_emt
             source: "/qmlimages/Showkoor.svg"
-            sourceSize.width: width/5
-            sourceSize.height: height/5
+            sourceSize.width: 100
+            sourceSize.height: 100
             fillMode: Image.PreserveAspectFit
             Rectangle{
                 id : emt100Frame
-                width: find_emt.width
-                height: find_emt.height
+                width: parent.width
+                height: parent.height
                 color: "transparent"
                 Text {
                     text: qsTr("%1").arg(clickMenu.coord)
@@ -408,7 +408,7 @@ FlightMap {
                     font.pointSize: 10
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    anchors.verticalCenter: parent.verticalCenter/2
+                    anchors.verticalCenter: parent.top
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
@@ -450,7 +450,6 @@ FlightMap {
             hide()
         }
     }
-
     // GoTo Location visuals
     MapQuickItem {
         id:             gotoLocationItem
@@ -461,13 +460,13 @@ FlightMap {
         sourceItem: Image {
             id: gotoLocationImage
             source: "/qmlimages/Goto.svg"
-            sourceSize.width: width/5
-            sourceSize.height: height/5
+            sourceSize.width: 100
+            sourceSize.height: 100
             fillMode: Image.PreserveAspectFit
             Rectangle{
                 id : gotoLocationFrame
-                width: gotoLocationImage.width
-                height: gotoLocationImage.height
+                width: parent.width
+                height: parent.height
                 color: "transparent"
                 Text {
                     text: qsTr("%1").arg(clickMenu.coord)
@@ -476,7 +475,7 @@ FlightMap {
                     font.pointSize: 10
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    anchors.verticalCenter: parent.verticalCenter/2
+                    anchors.verticalCenter: parent.top
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }

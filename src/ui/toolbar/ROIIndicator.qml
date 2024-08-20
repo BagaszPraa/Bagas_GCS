@@ -23,7 +23,7 @@ import QGroundControl.Palette               1.0
 //-- ROI Indicator
 Item {
     id:                     _root
-    width:                  showIndicator ? roiIcon.width : 0
+    // width:                  showIndicator ? roiIcon.width : 0
     visible:                showIndicator
     anchors.top:            parent.top
     anchors.bottom:         parent.bottom
