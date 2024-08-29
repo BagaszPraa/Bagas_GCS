@@ -582,7 +582,7 @@ FlightMap {
         sourceItem: MissionItemIndexLabel {
             checked:    true
             index:      -1
-            label:      qsTr("ROI di sini "," Jadikan ini wilayah yang menarik")
+            label:      qsTr("Hadap ke sini"," Jadikan ini wilayah yang menarik")
         }
 
         //-- Visibilty controlled by actual state
@@ -702,7 +702,7 @@ FlightMap {
 
                 QGCButton {
                     Layout.fillWidth: true
-                    text: "ROI Ke Lokasi Ini"
+                    text: "Hadap Ke Lokasi Ini"
                     visible: globals.guidedControllerFlyView.showROI
                     onClicked: {
                         if (clickMenu.opened) {
