@@ -102,8 +102,8 @@ Item {
             // border.width: 5
             color: "transparent"
             ////SKALA PIXEL TARGET
-            property int targetWidth: 320
-            property int targetHeight: 180
+            property int targetWidth: 640
+            property int targetHeight: 360
             property real scaleX: targetWidth / width
             property real scaleY: targetHeight / height
             property real convertedX: Math.round(roiSelector.x * scaleX)
