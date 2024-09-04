@@ -131,6 +131,52 @@ Item {
                 id: mouseArea
                 anchors.fill: parent
                 property bool selecting: false
+                Column {
+                    spacing: 5
+                    TextField {
+                        id: ipField
+                        placeholderText: "Enter IP address"
+                        text: "127.0.0.1"  // Default value
+                    }
+                    TextField {
+                        id: portField
+                        placeholderText: "Enter port"
+                        inputMethodHints: Qt.ImhDigitsOnly  // Only allow numeric input
+                        text: "6000"  // Default value
+                    }
+                    Row {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: 10
+                        QGCButton {
+                            id: connectBut
+                            text: "Connect"
+                            onClicked: {
+                                var ip = ipField.text;
+                                var port = parseInt(portField.text);
+                                roisender.connectToHost(ip, port);
+                            }
+                        }
+                        QGCButton {
+                            text: "Disconnect"
+                            onClicked: roisender.disconnectFromHost()
+                        }
+                    }
+                }
+                // Row{
+                //     anchors.horizontalCenter: parent.horizontalCenter
+                //     // color: "white"
+
+                //     // QGCButton{
+                //     //     id : connectBut
+                //     //     text: "Connect"
+                //     //     onClicked: roisender.connectToHost("127.0.0.1", 6000)////ROISENDER
+                //     // }
+                //     // QGCButton{
+                //     //     // anchors.left: connectBut.right
+                //     //     text: "Disconnect"
+                //     //     onClicked: roisender.disconnectFromHost()
+                //     // }
+                // }
                 onPressed: {
                     selecting = true;
                     roiSelector.x = mouse.x - roiSelector.width / 2;
@@ -141,20 +187,6 @@ Item {
                     if (selecting) {
                         roiSelector.x = mouse.x - roiSelector.width / 2;
                         roiSelector.y = mouse.y - roiSelector.height / 2;
-                        // console.log(qsTr("Dragged"))
-                        // let logData = qsTr("%1,%2,%3,%4")
-                        //             .arg(pembatas.convertedX)
-                        //             .arg(pembatas.convertedY)
-                        //             .arg(pembatas.convertedWidth)
-                        //             .arg(pembatas.convertedHeight);
-                        // // roisender.sendData(logData);
-                        // console.log(logData);
-                        // console.log(qsTr("width=%1 height=%2 scaleX=%3 scaleY=%4")
-                        //             .arg(pembatas.width)
-                        //             .arg(pembatas.height)
-                        //             .arg(pembatas.scaleX)
-                        //             .arg(pembatas.scaleY)
-                        //             )
                     }
                 }
                 onReleased: {
@@ -166,7 +198,6 @@ Item {
                                 .arg(pembatas.convertedWidth)
                                 .arg(pembatas.convertedHeight);
                     roisender.sendData(logData);
-                    // console.log(logData);
                 }
             }
         }
