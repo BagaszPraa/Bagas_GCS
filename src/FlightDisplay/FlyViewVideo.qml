@@ -67,7 +67,6 @@ Item {
     ROIsender{
         id : roisender
     }
-
     QGCLabel {
         text: qsTr("Double-click to exit full screen")
         font.pointSize: ScreenTools.largeFontPointSize
@@ -162,21 +161,6 @@ Item {
                         }
                     }
                 }
-                // Row{
-                //     anchors.horizontalCenter: parent.horizontalCenter
-                //     // color: "white"
-
-                //     // QGCButton{
-                //     //     id : connectBut
-                //     //     text: "Connect"
-                //     //     onClicked: roisender.connectToHost("127.0.0.1", 6000)////ROISENDER
-                //     // }
-                //     // QGCButton{
-                //     //     // anchors.left: connectBut.right
-                //     //     text: "Disconnect"
-                //     //     onClicked: roisender.disconnectFromHost()
-                //     // }
-                // }
                 onPressed: {
                     selecting = true;
                     roiSelector.x = mouse.x - roiSelector.width / 2;
