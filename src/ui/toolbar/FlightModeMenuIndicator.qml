@@ -59,7 +59,6 @@ Item {
                             onClicked: {
                                 activeVehicle.flightMode = text
                                 mainWindow.hideIndicatorPopup()
-                                ///USER
                             }
                         }
                     }
@@ -73,16 +72,16 @@ Item {
         spacing:    0
         height:     parent.height
 
-        QGCColoredImage {
-            id:         flightModeIcon
-            width:      ScreenTools.defaultFontPixelWidth * 2
-            height:     ScreenTools.defaultFontPixelHeight * 0.75
-            fillMode:   Image.PreserveAspectFit
-            mipmap:     true
-            color:      qgcPal.text
-            source:     "/qmlimages/FlightModesComponentIcon.png"
-            Layout.alignment:   Qt.AlignVCenter
-        }
+        // QGCColoredImage {
+        //     id:         flightModeIcon
+        //     width:      ScreenTools.defaultFontPixelWidth * 2
+        //     height:     ScreenTools.defaultFontPixelHeight * 0.75
+        //     fillMode:   Image.PreserveAspectFit
+        //     mipmap:     true
+        //     color:      qgcPal.text
+        //     source:     "/qmlimages/FlightModesComponentIcon.png"
+        //     Layout.alignment:   Qt.AlignVCenter
+        // }
 
         Item {
             Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth / 2
@@ -91,7 +90,7 @@ Item {
 
         QGCLabel {
             text:               activeVehicle ? activeVehicle.flightMode : qsTr("N/A", "No data to display")
-            font.pointSize:     fontPointSize
+            font.pointSize:     fontPointSize *2
             Layout.alignment:   Qt.AlignVCenter
         }
     }
@@ -100,4 +99,5 @@ Item {
         anchors.fill:   parent
         onClicked:      mainWindow.showIndicatorPopup(_root, flightModeMenu)
     }
+    ////USER
 }
