@@ -2531,7 +2531,7 @@ void Vehicle::virtualTabletJoystickValue(double roll, double pitch, double yaw, 
             static_cast<float>(thrust),
             0);
     }
-    ///USER (RCOVERRIDE)
+    ///USER (RC_OVERRIDE)
 }
 
 void Vehicle::virtualRCOverride(double yaw, double thrust)
@@ -2543,7 +2543,7 @@ void Vehicle::virtualRCOverride(double yaw, double thrust)
             static_cast<float>(thrust),
             0);
     }
-    ///USER (RCOVERRIDE)
+    ///USER (RC_OVERRIDE)
 }
 
 void Vehicle::_say(const QString& text)
@@ -3549,10 +3549,14 @@ void Vehicle::rebootVehicle()
     Vehicle::MavCmdAckHandlerInfo_t handlerInfo = {};
     handlerInfo.resultHandler       = _rebootCommandResultHandler;
     handlerInfo.resultHandlerData   = this;
-
     sendMavCommandWithHandler(&handlerInfo, _defaultComponentId, MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN, 1);
 }
-
+// void Vehicle::rebootVehicleWithAction()
+// {
+//     if (QMessageBox::question(nullptr, "Confirm", "Reboot Vehicle?", QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+//         Vehicle::rebootVehicle();
+//     }
+// }
 void Vehicle::startCalibration(Vehicle::CalibrationType calType)
 {
     SharedLinkInterfacePtr sharedLink = vehicleLinkManager()->primaryLink().lock();
@@ -4442,10 +4446,24 @@ void Vehicle::clearAllParamMapRC(void)
                                            param_id_cstr,
                                            -2,                                                  // Disable map for specified tuning id
                                            i,                                                   // tuning id
-                                           0, 0, 0, 0);                                         // unused
+                                           0, 0, 0, 0);
+        // unused
         sendMessageOnLinkThreadSafe(sharedLink.get(), message);
     }
 }
+
+void Vehicle::toggleSafetySwitch(bool condition) {
+    if (QMessageBox::question(nullptr, "Safety Confirm", "Are you sure ?", QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        // Jika condition == true, nilai akan 1, jika false, nilai akan 0
+        uint8_t custom_mode_value = condition ? 1 : 0;
+        sendMavCommand(defaultComponentId(),
+                       MAV_CMD_DO_SET_MODE,
+                       true,    // show error if fails
+                       MAV_MODE_FLAG_SAFETY_ARMED,
+                       custom_mode_value); // Sesuai dengan condition
+    }
+}
+
 void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
 {
     SharedLinkInterfacePtr sharedLink = vehicleLinkManager()->primaryLink().lock();
@@ -4464,16 +4482,6 @@ void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
     float midValue = (minValue + maxValue) / 2.0;  // 1500
     float range = (maxValue - minValue) / 2.0;     // 400
     float newThrustCommand  = midValue + (thrust * range);
-    // Incoming values are in the range -1:1, scaling to 1000-2000
-    // float axesScaling = 500.0;  // Scale -1:1 to -500:500
-    // float baseValue = 1500.0;   // Center value for RC channels
-
-    // float newRollCommand    = baseValue + (roll * axesScaling);
-    // float newPitchCommand   = baseValue + (pitch * axesScaling);
-    // float newYawCommand     = baseValue + (yaw * axesScaling);
-    // float newThrustCommand  = baseValue + (thrust * axesScaling);
-    // Additional channels can be added here as needed
-    // For this example, we are only using the first 4 channels and setting the rest to 0 or a default value
     uint16_t channelValues[19] = {0};
     channelValues[0] = 0;
     channelValues[1] = 0;
@@ -4521,7 +4529,6 @@ void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
         channelValues[16],
         channelValues[17],
         channelValues[18]);
-
     sendMessageOnLinkThreadSafe(sharedLink.get(), message);
 }
 

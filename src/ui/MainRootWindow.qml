@@ -74,6 +74,7 @@ ApplicationWindow {
 
     //-------------------------------------------------------------------------
     //-- Global Scope Variables
+    property var    _activeVehicle:     QGroundControl.multiVehicleManager.activeVehicle
 
     QtObject {
         id: globals
@@ -165,6 +166,13 @@ ApplicationWindow {
 
     function showSettingsTool() {
         showTool(qsTr("Application Settings"), "AppSettings.qml", "/res/QGCLogoWhite")
+    }
+    function rebootAction () {
+        mainWindow.showMessageDialog(qsTr("Reboot Confirm"),
+                                     qsTr("Are you sure you want to reboot the vehicle?"),
+                                     StandardButton.Cancel | StandardButton.Ok,
+                                     function(){_activeVehicle.rebootVehicle()}
+                                     )
     }
 
     //-------------------------------------------------------------------------
@@ -342,6 +350,21 @@ ApplicationWindow {
                             if (!mainWindow.preventViewSwitch()) {
                                 toolSelectDialog.close()
                                 mainWindow.showSettingsTool()
+                            }
+                        }
+                    }
+                    SubMenuButton {
+                        id:                 rebootButton
+                        height:             toolSelectDialog._toolButtonHeight
+                        Layout.fillWidth:   true
+                        text:               qsTr("Reboot Vehicle")
+                        imageResource:      "/res/PowerButton"
+                        imageColor:         qgcPal.text
+                        visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup && _activeVehicle && !_activeVehicle.armed
+                        onClicked: {
+                            if (!mainWindow.preventViewSwitch()) {
+                                toolSelectDialog.close()
+                                mainWindow.rebootAction()
                             }
                         }
                     }

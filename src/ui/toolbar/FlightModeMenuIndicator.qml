@@ -59,6 +59,7 @@ Item {
                             onClicked: {
                                 activeVehicle.flightMode = text
                                 mainWindow.hideIndicatorPopup()
+                                ///USER
                             }
                         }
                     }

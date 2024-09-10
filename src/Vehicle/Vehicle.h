@@ -352,6 +352,7 @@ public:
 
     Q_INVOKABLE void virtualTabletJoystickValue(double roll, double pitch, double yaw, double thrust);
     Q_INVOKABLE void virtualRCOverride(double yaw, double thrust);
+    Q_INVOKABLE void toggleSafetySwitch(bool condition);
 
     /// Command vehicle to return to launch
     Q_INVOKABLE void guidedModeRTL(bool smartRTL);
@@ -417,6 +418,7 @@ public:
 
     /// Reboot vehicle
     Q_INVOKABLE void rebootVehicle();
+    // Q_INVOKABLE void rebootVehicleWithAction();
 
     /// Clear Messages
     Q_INVOKABLE void clearMessages();
@@ -488,7 +490,7 @@ public:
     QGeoCoordinate armedPosition    () { return _armedPosition; }
 
     void updateFlightDistance(double distance);
-
+/////CUSTOM MAVLINK MSGS (BAGAS)
     bool joystickEnabled            () const;
     void setJoystickEnabled         (bool enabled);
     void sendJoystickDataThreadSafe (float roll, float pitch, float yaw, float thrust, quint16 buttons);

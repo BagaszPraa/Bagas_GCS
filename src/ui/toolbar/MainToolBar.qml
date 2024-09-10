@@ -113,7 +113,6 @@ Rectangle {
                                     (currentToolbar == planViewToolbar ? "qrc:/qml/PlanToolBarIndicators.qml" : "")
         }
     }
-
     //-------------------------------------------------------------------------
     //-- Branding Logo
     Image {
