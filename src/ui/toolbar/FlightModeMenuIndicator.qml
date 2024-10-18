@@ -95,9 +95,9 @@ Item {
         }
     }
 
-    QGCMouseArea {
-        anchors.fill:   parent
-        onClicked:      mainWindow.showIndicatorPopup(_root, flightModeMenu)
-    }
+    // QGCMouseArea {
+    //     anchors.fill:   parent
+    //     onClicked:      mainWindow.showIndicatorPopup(_root, flightModeMenu)
+    // }
     ////USER
 }

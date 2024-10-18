@@ -16,11 +16,11 @@ ToolStripActionList {
     id: _root
     signal displayPreFlightChecklist
     model: [
-        ToolStripAction {
-            text:           qsTr("Plan")
-            iconSource:     "/qmlimages/Plan.svg"
-            onTriggered:    mainWindow.showPlanView()
-        },
+        // ToolStripAction {
+        //     text:           qsTr("Plan")
+        //     iconSource:     "/qmlimages/Plan.svg"
+        //     onTriggered:    mainWindow.showPlanView()
+        // },
         PreFlightCheckListShowAction {
             onTriggered: displayPreFlightChecklist()
             enabled: _activeVehicle && _activeVehicle.readyToFly ? false : true
