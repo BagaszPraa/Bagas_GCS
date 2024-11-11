@@ -110,13 +110,13 @@ Item {
                 QGCLabel {
                     text:                   getBatteryVoltage() + qsTr(" V")
                     font.pointSize:         ScreenTools.mediumFontPointSize
-                    color:                  getBatteryColor()
+                    color:                  qgcPal.text
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
                 QGCLabel {
                     text:                   getBatteryPercentageText()
                     font.pointSize:         ScreenTools.mediumFontPointSize
-                    color:                  getBatteryColor()
+                    color:                  qgcPal.text
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }

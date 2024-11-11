@@ -189,6 +189,8 @@
         <file alias="subMenuButtonImage.png">resources/CogWheels.png</file>
         <file alias="subVehicleArrowOpaque.png">src/FlightMap/Images/sub.png</file>
         <file alias="TelemRSSI.svg">src/ui/toolbar/Images/TelemRSSI.svg</file>
+        <file alias="Bar_Signal.svg">src/ui/toolbar/Images/Bar_Signal.svg</file>
+        <file alias="Bar_Signal_2.svg">src/ui/toolbar/Images/Bar_Signal_2.svg</file>
         <file alias="TuningComponentIcon.png">src/AutoPilotPlugins/Common/Images/TuningComponentIcon.png</file>
         <file alias="vehicleLCCM.svg">src/FlightMap/Images/vehicleLCCM.svg</file>
         <file alias="vehicleArrowOpaque.svg">src/FlightMap/Images/vehicleArrowOpaque.svg</file>
