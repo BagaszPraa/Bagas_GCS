@@ -90,7 +90,7 @@ Item {
         anchors.fill:       parent
         enabled:            pipState.state === pipState.fullState
         hoverEnabled: true
-        onDoubleClicked:    QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
+        // onDoubleClicked:    QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
     }
 
     ProximityRadarVideoView{
