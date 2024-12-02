@@ -22,7 +22,7 @@ SetupPage {
 
     readonly property int _barHeight:           10
     readonly property int _barWidth:            5
-    readonly property int _sliderHeight:        10
+    readonly property int _sliderHeight:        30
     readonly property int _motorTimeoutSecs:    3
 
     FactPanelController {
@@ -66,7 +66,7 @@ SetupPage {
                             maximumValue:               100
                             stepSize:                   1
                             value:                      0
-                            updateValueWhileDragging:   false
+                            updateValueWhileDragging:   true
 
                             onValueChanged: {
                                 controller.vehicle.motorTest(index + 1, value, value == 0 ? 0 : _motorTimeoutSecs, true)
@@ -104,7 +104,7 @@ SetupPage {
                         maximumValue:               100
                         stepSize:                   1
                         value:                      0
-                        updateValueWhileDragging:   false
+                        updateValueWhileDragging:   true
 
                         onValueChanged: {
                             for (var sliderIndex=0; sliderIndex<sliderRepeater.count; sliderIndex++) {
