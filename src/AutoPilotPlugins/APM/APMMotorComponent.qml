@@ -34,6 +34,11 @@ SetupPage {
 
         Column {
             spacing: ScreenTools.defaultFontPixelHeight
+            QGCLabel {
+                text:                       qsTr("Motor Count = %1").arg(controller.vehicle.motorCount)
+                color: qgcPal.text
+                visible: true
+            }
 
             QGCLabel {
                 text:       qsTr("Warning: Unable to determine motor count")
@@ -48,8 +53,7 @@ SetupPage {
 
                 Repeater {
                     id:         sliderRepeater
-                    model:      controller.vehicle.motorCount == -1 ? 8 : controller.vehicle.motorCount
-
+                    model:      controller.vehicle.motorCount == -1 ? 0 : controller.vehicle.motorCount
                     Column {
                         property alias motorSlider: slider
 
@@ -94,6 +98,7 @@ SetupPage {
                     QGCLabel {
                         anchors.horizontalCenter:   parent.horizontalCenter
                         text:                       qsTr("All")
+                        visible:    controller.vehicle.motorCount == -1 ? false : true
                     }
 
                     QGCSlider {
@@ -105,6 +110,7 @@ SetupPage {
                         stepSize:                   1
                         value:                      0
                         updateValueWhileDragging:   true
+                        visible:    controller.vehicle.motorCount == -1 ? false : true
 
                         onValueChanged: {
                             for (var sliderIndex=0; sliderIndex<sliderRepeater.count; sliderIndex++) {
