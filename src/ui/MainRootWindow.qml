@@ -376,7 +376,7 @@ ApplicationWindow {
 
                         QGCLabel {
                             id:                     versionLabel
-                            text:                   qsTr("%1").arg(QGroundControl.appName)
+                            text:                   qsTr("%1 Version 1.0").arg(QGroundControl.appName)
                             font.pointSize:         ScreenTools.smallFontPointSize
                             wrapMode:               QGCLabel.WordWrap
                             Layout.maximumWidth:    parent.width
