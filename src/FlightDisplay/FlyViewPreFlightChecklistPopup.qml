@@ -48,6 +48,7 @@ QGCPopupDialog {
                 _root.open()
             } else {
                 _root.close()
+                _activeVehicle.toggleSafetySwitch(false);  // Mengirim true jika kendaraan tidak di-arm
             }
         }
     }
