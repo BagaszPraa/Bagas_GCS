@@ -32,13 +32,13 @@ PreFlightCheckButton {
 
     function updateTelemetryTextFailure() {
         if(_unhealthySensors & _allCheckedSensors) {
-            if (_unhealthySensors & Vehicle.SysStatusSensor3dMag)                       telemetryTextFailure = qsTr("Failure. Magnetometer issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensor3dAccel)                 telemetryTextFailure = qsTr("Failure. Accelerometer issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensor3dGyro)                  telemetryTextFailure = qsTr("Failure. Gyroscope issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensorAbsolutePressure)        telemetryTextFailure = qsTr("Failure. Barometer issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensorDifferentialPressure)    telemetryTextFailure = qsTr("Failure. Airspeed sensor issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensorAHRS)                    telemetryTextFailure = qsTr("Failure. AHRS issues. Check console.")
-            else if(_unhealthySensors & Vehicle.SysStatusSensorGPS)                     telemetryTextFailure = qsTr("Failure. GPS issues. Check console.")
+            if (_unhealthySensors & Vehicle.SysStatusSensor3dMag)                       telemetryTextFailure = qsTr("Kegagalan. Masalah Magnetometer (Kompas). Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensor3dAccel)                 telemetryTextFailure = qsTr("Kegagalan. Masalah Accelerometer. Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensor3dGyro)                  telemetryTextFailure = qsTr("Kegagalan. Masalah Gyroscope. Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensorAbsolutePressure)        telemetryTextFailure = qsTr("Kegagalan. Masalah Barometer. Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensorDifferentialPressure)    telemetryTextFailure = qsTr("Kegagalan. Masalah Airspeed sensor. Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensorAHRS)                    telemetryTextFailure = qsTr("Kegagalan. Masalah AHRS. Periksa konsol.")
+            else if(_unhealthySensors & Vehicle.SysStatusSensorGPS)                     telemetryTextFailure = qsTr("Kegagalan. Masalah GNSS. Periksa konsol.")
         }
     }
 }

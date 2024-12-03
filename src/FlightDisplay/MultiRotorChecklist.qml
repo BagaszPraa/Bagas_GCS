@@ -22,11 +22,11 @@ Item {
     PreFlightCheckModel {
         id:     listModel
         PreFlightCheckGroup {
-            name: qsTr("Multirotor Initial Checks")
+            name: qsTr("Pemeriksaan Awal Multirotor")
 
             PreFlightCheckButton {
-                name:           qsTr("Hardware")
-                manualText:     qsTr("Props mounted and secured?")
+                name:           qsTr("Komponen")
+                manualText:     qsTr("Apakah Propeller dan modul-modul lainnya terpasang dengan aman?")
             }
 
             PreFlightBatteryCheck {
@@ -47,39 +47,37 @@ Item {
         }
 
         PreFlightCheckGroup {
-            name: qsTr("Please arm the vehicle here")
-
+            name: qsTr("Arming Multirotor")
             PreFlightCheckButton {
-                name:            qsTr("Motors")
-                manualText:      qsTr("Propellers free? Then throttle up gently. Working properly?")
+                name:            qsTr("Motor")
+                manualText:      qsTr("Baling-balingnya bebas? Lalu, naikkan Throttle dengan perlahan. Berfungsi dengan baik?")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("Mission")
-                manualText:     qsTr("Please confirm mission is valid (waypoints valid, no terrain collision).")
+                name:           qsTr("Misi")
+                manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
             }
 
             PreFlightSoundCheck {
             }
         }
-
         PreFlightCheckGroup {
             name: qsTr("Last preparations before launch")
 
             // Check list item group 2 - Final checks before launch
             PreFlightCheckButton {
                 name:           qsTr("Payload")
-                manualText:     qsTr("Configured and started? Payload lid closed?")
+                manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar?")
             }
 
             PreFlightCheckButton {
-                name:           qsTr("Wind & weather")
-                manualText:     qsTr("OK for your platform?")
+                name:           qsTr("Angin & Cuaca")
+                manualText:     qsTr("Apakah aman untuk menerbangkan Multirotor")
             }
 
             PreFlightCheckButton {
                 name:           qsTr("Flight area")
-                manualText:     qsTr("Launch area and path free of obstacles/people?")
+                manualText:     qsTr("Area peluncuran dan jalur bebas dari gangguan/orang?")
             }
         }
     }

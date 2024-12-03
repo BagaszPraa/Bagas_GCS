@@ -31,7 +31,7 @@ ToolStripActionList {
         ToolStripAction {
             text: _activeVehicle ? (_activeVehicle.readyToFly ? qsTr("Safety OFF") : qsTr("Safety ON")) : qsTr("N/A")
             iconSource: _activeVehicle ? (_activeVehicle.readyToFly ? "/res/LockOpen" : "/res/LockClosed") : "/res/LockClosed"
-            enabled: _activeVehicle && !_activeVehicle.armed
+            enabled: _activeVehicle && !_activeVehicle.armed && _activeVehicle.readyToFly
             onTriggered: {
                 if (_activeVehicle) {
                     if (!_activeVehicle.readyToFly) {

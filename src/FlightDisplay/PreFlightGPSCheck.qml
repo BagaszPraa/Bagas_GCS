@@ -14,10 +14,10 @@ import QGroundControl.Controls  1.0
 import QGroundControl.Vehicle   1.0
 
 PreFlightCheckButton {
-    name:                           qsTr("GPS")
+    name:                           qsTr("GNSS")
     telemetryFailure:               _3dLockFailure || _satCountFailure
     telemetryTextFailure:           _3dLockFailure ?
-                                        qsTr("Waiting for 3D lock.") :
+                                        qsTr("Menunggu GNSS 3D-Lock.") :
                                         (_satCountFailure ? _satCountFailureText : "")
     allowTelemetryFailureOverride:  !_3dLockFailure && _satCountFailure && allowOverrideSatCount
 
@@ -28,5 +28,5 @@ PreFlightCheckButton {
     property int    _satCount:              globals.activeVehicle ? globals.activeVehicle.gps.count.rawValue : 0
     property bool   _3dLockFailure:         !_3dLock
     property bool   _satCountFailure:       failureSatCount !== -1 && _satCount <= failureSatCount
-    property string _satCountFailureText:   allowOverrideSatCount ? qsTr("Warning - Sat count below %1.").arg(failureSatCount + 1) : qsTr("Waiting for sat count above %1.").arg(failureSatCount)
+    property string _satCountFailureText:   allowOverrideSatCount ? qsTr("Peringatan - Jumlah satelit di bawah %1.").arg(failureSatCount + 1) : qsTr("Menunggu jumlah satelit di atas %1.").arg(failureSatCount)
 }
