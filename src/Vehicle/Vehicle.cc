@@ -11,7 +11,7 @@
 #include <QDateTime>
 #include <QLocale>
 #include <QQuaternion>
-
+#include <QMessageBox>
 #include <Eigen/Eigen>
 
 #include "Vehicle.h"
