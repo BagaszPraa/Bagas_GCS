@@ -51,7 +51,7 @@ Item {
 
             PreFlightCheckButton {
                 name:            qsTr("Aktuator")
-                manualText:      qsTr("Move all control surfaces. Did they work properly?")
+                manualText:      qsTr("Gerakkan semua kontrol.Apakah bekerja dengan baik?")
             }
 
             PreFlightCheckButton {
@@ -79,7 +79,7 @@ Item {
 
             PreFlightCheckButton {
                 name:           qsTr("Angin & Cuaca")
-                manualText:     qsTr("Apakah aman untuk menerbangkan Multirotor")
+                manualText:     qsTr("Apakah aman untuk menerbangkan Pesawat")
             }
 
             PreFlightCheckButton {
