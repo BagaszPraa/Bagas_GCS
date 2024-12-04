@@ -62,7 +62,7 @@ Item {
             }
         }
         PreFlightCheckGroup {
-            name: qsTr("Last preparations before launch")
+            name: qsTr("Persiapan terakhir sebelum terbang")
 
             // Check list item group 2 - Final checks before launch
             PreFlightCheckButton {
