@@ -52,12 +52,10 @@ QGCPopupDialog {
             }
         }
     }
-
     Loader {
         id:     checkList
         source: QGroundControl.corePlugin.options.preFlightChecklistUrl
     }
-
     property alias checkListItem: checkList.item
 
     Connections {

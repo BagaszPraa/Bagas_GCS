@@ -77,6 +77,7 @@
         <file alias="PlanToolBarIndicators.qml">src/PlanView/PlanToolBarIndicators.qml</file>
         <file alias="PlanView.qml">src/PlanView/PlanView.qml</file>
         <file alias="PreFlightCheckList.qml">src/FlightDisplay/PreFlightCheckList.qml</file>
+        <file alias="CheckMotor.qml">src/FlightDisplay/CheckMotor.qml</file>
         <file alias="PX4FlowSensor.qml">src/VehicleSetup/PX4FlowSensor.qml</file>
         <file alias="QGCInstrumentWidget.qml">src/FlightMap/Widgets/QGCInstrumentWidget.qml</file>
         <file alias="QGCInstrumentWidgetAlternate.qml">src/FlightMap/Widgets/QGCInstrumentWidgetAlternate.qml</file>

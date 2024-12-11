@@ -102,6 +102,7 @@ public:
 
     /// Provides an optional, custom preflight checklist
     virtual QUrl    preFlightChecklistUrl           () const { return QUrl::fromUserInput("qrc:/qml/PreFlightCheckList.qml"); }
+    // virtual QUrl    preFlightChecklistUrl           () const { return QUrl::fromUserInput("qrc:/qml/CheckMotor.qml"); }
 
     /// Allows replacing the toolbar Light Theme color
     virtual QColor  toolbarBackgroundLight          () const;

@@ -17,19 +17,14 @@ import QGroundControl.ScreenTools   1.0
 import QGroundControl.Controls      1.0
 import QGroundControl.FlightDisplay 1.0
 import QGroundControl.Vehicle       1.0
-
 ColumnLayout {
     spacing: 0.8 * ScreenTools.defaultFontPixelWidth
-
-    property real _verticalMargin: ScreenTools.defaultFontPixelHeight / 2
-
-    Loader {
-        id:     modelContainer
-        source: "/checklists/DefaultChecklist.qml"
-    }
-
-    property bool allChecksPassed:  false
-    property var  vehicleCopy:      globals.activeVehicle
+    // width: 500
+    // height: 500
+    property var _activeVehicle     : QGroundControl.multiVehicleManager.activeVehicle
+    property bool allChecksPassed   : false
+    property var vehicleCopy        : globals.activeVehicle
+    property bool statusCheckList   : false
 
     onVehicleCopyChanged: {
         if (checkListRepeater.model) {
@@ -44,7 +39,6 @@ ColumnLayout {
             globals.activeVehicle.checkListState = Vehicle.CheckListFailed
         }
     }
-
     function _handleGroupPassedChanged(index, passed) {
         if (passed) {
             // Collapse current group
@@ -92,17 +86,17 @@ ColumnLayout {
         return
     }
 
-    Component.onCompleted: {
-        _updateModel()
-    }
+    // Component.onCompleted: {
+    //     _updateModel()
+    // }
 
-    onVisibleChanged: {
-        if(globals.activeVehicle) {
-            if(visible) {
-                _updateModel()
-            }
-        }
-    }
+    // onVisibleChanged: {
+    //     if(globals.activeVehicle) {
+    //         if(visible) {
+    //             _updateModel()
+    //         }
+    //     }
+    // }
 
     // We delay the updates when a group passes so the user can see all items green for a moment prior to hiding
     Timer {
@@ -122,18 +116,23 @@ ColumnLayout {
             _handleGroupPassedChanged(index, passed)
         }
     }
-
-    // Header/title of checklist
     RowLayout {
+        id : progress
         Layout.fillWidth:   true
         height:             1.75 * ScreenTools.defaultFontPixelHeight
-        spacing:            0
-
+        spacing:            10
         QGCLabel {
             Layout.fillWidth:   true
             text:               allChecksPassed ? qsTr("(Tercapai)") : qsTr("Dalam Proses")
             font.pointSize:     ScreenTools.mediumFontPointSize
         }
+        // QGCButton {
+        //     text:               allChecksPassed ? qsTr("(Tercapai)") : qsTr("Dalam Proses")
+        //     Layout.fillWidth: true // Mengisi lebar ColumnLayout
+        //     height: 1.2 * ScreenTools.defaultFontPixelHeight
+        //     onClicked: allChecksPassed = true // Mengubah statusCheckList menjadi true
+        //     enabled : allChecksPassed
+        // }
         QGCButton {
             width:              1.2 * ScreenTools.defaultFontPixelHeight
             height:             1.2 * ScreenTools.defaultFontPixelHeight
@@ -147,8 +146,30 @@ ColumnLayout {
             }
         }
     }
+    // Header/title of checklist
+    RowLayout {
+        id: menuBar
+        Layout.fillWidth: true // Mengisi lebar di dalam RowLayout
+        spacing: 10
+        QGCButton {
+            text: qsTr("Pre-Flight CheckList")
+            Layout.fillWidth: true // Mengisi lebar ColumnLayout
+            height: 1.2 * ScreenTools.defaultFontPixelHeight
+            onClicked: _updateModel()
+            enabled: !_activeVehicle.readyToFly
+        }
+        QGCButton {
+            text: qsTr("Motor Test")
+            Layout.fillWidth: true // Mengisi lebar ColumnLayout
+            height: 1.2 * ScreenTools.defaultFontPixelHeight
+            onClicked: modelContainer.source = "CheckMotor.qml"
+        }
+    }
+    Loader {
+         id: modelContainer
+         source: "CheckMotor.qml" // Muat komponen awal
 
-    // All check list items
+    }
     Repeater {
         id:     checkListRepeater
         model:  modelContainer.item.model

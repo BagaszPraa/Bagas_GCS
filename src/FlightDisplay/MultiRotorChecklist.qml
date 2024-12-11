@@ -22,49 +22,31 @@ Item {
     PreFlightCheckModel {
         id:     listModel
         PreFlightCheckGroup {
-            name: qsTr("Pemeriksaan Awal Multirotor")
-
-            PreFlightCheckButton {
-                name:           qsTr("Komponen")
-                manualText:     qsTr("Apakah Propeller dan modul-modul lainnya terpasang dengan aman?")
-            }
-
+            name: qsTr("Pengecekan Sensor & Baterai")
             PreFlightBatteryCheck {
                 failurePercent:                 40
                 allowFailurePercentOverride:    false
             }
-
             PreFlightSensorsHealthCheck {
             }
-
             PreFlightGPSCheck {
                 failureSatCount:        9
                 allowOverrideSatCount:  true
             }
-
             PreFlightRCCheck {
             }
-        }
-
-        PreFlightCheckGroup {
-            name: qsTr("Arming Multirotor")
-            PreFlightCheckButton {
-                name:            qsTr("Motor")
-                manualText:      qsTr("Baling-balingnya bebas? Lalu, naikkan Throttle dengan perlahan. Berfungsi dengan baik?")
-            }
-
-            PreFlightCheckButton {
-                name:           qsTr("Misi")
-                manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
-            }
-
             PreFlightSoundCheck {
             }
         }
+
         PreFlightCheckGroup {
             name: qsTr("Persiapan terakhir sebelum terbang")
 
             // Check list item group 2 - Final checks before launch
+            PreFlightCheckButton {
+                name:           qsTr("Misi")
+                manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
+            }
             PreFlightCheckButton {
                 name:           qsTr("Payload")
                 manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar?")
@@ -82,4 +64,3 @@ Item {
         }
     }
 }
-
