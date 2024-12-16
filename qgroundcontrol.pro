@@ -1449,3 +1449,4 @@ LinuxBuild {
 
     INSTALLS += target share_qgroundcontrol share_icons share_metainfo share_applications
 }
+android: include(C:/Users/ACER/AppData/Local/Android/Sdk/android_openssl/openssl.pri)

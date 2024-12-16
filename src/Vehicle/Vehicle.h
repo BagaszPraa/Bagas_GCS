@@ -353,6 +353,9 @@ public:
     Q_INVOKABLE void virtualTabletJoystickValue(double roll, double pitch, double yaw, double thrust);
     Q_INVOKABLE void virtualRCOverride(double yaw, double thrust);
     Q_INVOKABLE void toggleSafetySwitch(bool condition);
+    Q_INVOKABLE void toggleSafetySwitchNoMessage(bool condition);
+
+
 
     /// Command vehicle to return to launch
     Q_INVOKABLE void guidedModeRTL(bool smartRTL);

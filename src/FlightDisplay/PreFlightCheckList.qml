@@ -19,8 +19,6 @@ import QGroundControl.FlightDisplay 1.0
 import QGroundControl.Vehicle       1.0
 ColumnLayout {
     spacing: 0.8 * ScreenTools.defaultFontPixelWidth
-    // width: 500
-    // height: 500
     property var _activeVehicle     : QGroundControl.multiVehicleManager.activeVehicle
     property bool allChecksPassed   : false
     property var vehicleCopy        : globals.activeVehicle
@@ -126,13 +124,6 @@ ColumnLayout {
             text:               allChecksPassed ? qsTr("(Tercapai)") : qsTr("Dalam Proses")
             font.pointSize:     ScreenTools.mediumFontPointSize
         }
-        // QGCButton {
-        //     text:               allChecksPassed ? qsTr("(Tercapai)") : qsTr("Dalam Proses")
-        //     Layout.fillWidth: true // Mengisi lebar ColumnLayout
-        //     height: 1.2 * ScreenTools.defaultFontPixelHeight
-        //     onClicked: allChecksPassed = true // Mengubah statusCheckList menjadi true
-        //     enabled : allChecksPassed
-        // }
         QGCButton {
             width:              1.2 * ScreenTools.defaultFontPixelHeight
             height:             1.2 * ScreenTools.defaultFontPixelHeight

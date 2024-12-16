@@ -60,7 +60,7 @@ QGCButton {
                                           _pendingColor :
                                           _failedColor))
 
-    width:          40 * ScreenTools.defaultFontPixelWidth
+    width:          60 * ScreenTools.defaultFontPixelWidth
     topPadding:     _verticalPadding
     bottomPadding:  _verticalPadding
     leftPadding:    (_horizontalPadding * 2) + _stateFlagWidth

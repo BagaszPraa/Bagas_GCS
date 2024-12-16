@@ -4463,6 +4463,14 @@ void Vehicle::toggleSafetySwitch(bool condition) {
                        custom_mode_value); // Sesuai dengan condition
     }
 }
+void Vehicle::toggleSafetySwitchNoMessage(bool condition) {
+    uint8_t custom_mode_value = condition ? 1 : 0;
+    sendMavCommand(defaultComponentId(),
+                   MAV_CMD_DO_SET_MODE,
+                   true,    // show error if fails
+                   MAV_MODE_FLAG_SAFETY_ARMED,
+                   custom_mode_value); // Sesuai dengan condition
+}
 
 void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
 {

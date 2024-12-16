@@ -47,11 +47,14 @@ ColumnLayout {
         loops: Animation.Infinite
         running: false
     }
+
     RowLayout {
         id: buttonRow
         spacing: 10
+        width:  60 * ScreenTools.defaultFontPixelWidth
         Repeater {
             model:      controller.vehicle.motorCount == -1 ? 8 : controller.vehicle.motorCount
+            Layout.fillWidth: true
             QGCButton {
                 enabled: _activeVehicle.readyToFly
                 text: index + 1
@@ -72,16 +75,16 @@ ColumnLayout {
                         cwRotate(motorRotate_4)
                     }
                     else if (index+1 == 5){
-                        cwRotate(motorRotate_1)
+                        cwRotate(motorRotate_5)
                     }
                     else if (index+1 == 6){
-                        ccwRotate(motorRotate_2)
+                        ccwRotate(motorRotate_6)
                     }
                     else if (index+1 == 7){
-                        ccwRotate(motorRotate_3)
+                        ccwRotate(motorRotate_7)
                     }
                     else if (index+1 == 8){
-                        cwRotate(motorRotate_4)
+                        cwRotate(motorRotate_8)
                     }
 
                 }
@@ -91,10 +94,10 @@ ColumnLayout {
             id: safetySwitch
             onClicked: {
                 if (checked) {
-                    _activeVehicle.toggleSafetySwitch(false); // Mengirim false jika kendaraan di-arm
+                    _activeVehicle.toggleSafetySwitchNoMessage(false); // Mengirim false jika kendaraan di-arm
                 }
                 else {
-                    _activeVehicle.toggleSafetySwitch(true); // Mengirim false jika kendaraan di-arm
+                    _activeVehicle.toggleSafetySwitchNoMessage(true); // Mengirim false jika kendaraan di-arm
                 }
             }
         }
@@ -117,14 +120,15 @@ ColumnLayout {
     }
     Rectangle {
         id: motorAnimasi
-        Layout.fillWidth: true
-        height: 500
+        width:  60 * ScreenTools.defaultFontPixelWidth
+        height:  60 * ScreenTools.defaultFontPixelWidth
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
         color: "green"
 
         Rectangle {
             id: motor_1
-            width: 100
-            height: 100
+            width: parent.width / 4
+            height: parent.height / 4
             color: "blue"
             anchors.top: motorAnimasi.top
             anchors.left: motorAnimasi.left
@@ -138,8 +142,8 @@ ColumnLayout {
 
         Rectangle {
             id: motor_2
-            width: 100
-            height: 100
+            width: parent.width / 4
+            height: parent.height / 4
             color: "blue"
             anchors.top: motorAnimasi.top
             anchors.right: motorAnimasi.right
@@ -153,8 +157,8 @@ ColumnLayout {
 
         Rectangle {
             id: motor_3
-            width: 100
-            height: 100
+            width: parent.width / 4
+            height: parent.height / 4
             color: "blue"
             anchors.bottom: motorAnimasi.bottom
             anchors.left: motorAnimasi.left
@@ -168,8 +172,8 @@ ColumnLayout {
 
         Rectangle {
             id: motor_4
-            width: 100
-            height: 100
+            width: parent.width / 4
+            height: parent.height / 4
             color: "blue"
             anchors.bottom: motorAnimasi.bottom
             anchors.right: motorAnimasi.right
@@ -177,6 +181,65 @@ ColumnLayout {
                 id: motorRotate_4
                 origin.x: motor_4.width / 2
                 origin.y: motor_4.height / 2
+                angle: 0
+            }
+        }
+        Rectangle {
+            id: motor_5
+            width: parent.width / 4
+            height: parent.height / 4
+            color: "red"
+            anchors.top: motorAnimasi.top
+            anchors.left: motorAnimasi.left
+            transform: Rotation {
+                id: motorRotate_5
+                origin.x: motor_5.width / 2
+                origin.y: motor_5.height / 2
+                angle: 0
+            }
+        }
+
+        Rectangle {
+            id: motor_6
+            width: parent.width / 4
+            height: parent.height / 4
+            color: "red"
+            anchors.top: motorAnimasi.top
+            anchors.right: motorAnimasi.right
+            transform: Rotation {
+                id: motorRotate_6
+                origin.x: motor_6.width / 2
+                origin.y: motor_6.height / 2
+                angle: 0
+            }
+        }
+
+        Rectangle {
+            id: motor_7
+            width: parent.width / 4
+            height: parent.height / 4
+            color: "red"
+            anchors.bottom: motorAnimasi.bottom
+            anchors.left: motorAnimasi.left
+            transform: Rotation {
+                id: motorRotate_7
+                origin.x: motor_7.width / 2
+                origin.y: motor_7.height / 2
+                angle: 0
+            }
+        }
+
+        Rectangle {
+            id: motor_8
+            width: parent.width / 4
+            height: parent.height / 4
+            color: "red"
+            anchors.bottom: motorAnimasi.bottom
+            anchors.right: motorAnimasi.right
+            transform: Rotation {
+                id: motorRotate_8
+                origin.x: motor_8.width / 2
+                origin.y: motor_8.height / 2
                 angle: 0
             }
         }

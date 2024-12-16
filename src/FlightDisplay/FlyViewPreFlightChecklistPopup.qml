@@ -20,6 +20,7 @@ QGCPopupDialog {
     id:         _root
     title:      qsTr("Pre-Flight Checklist")
     buttons:    StandardButton.Close
+    rejectButtonEnabled: _activeVehicle.readyToFly ? false : true
 
     property var    _activeVehicle:     QGroundControl.multiVehicleManager.activeVehicle
     property bool   _useChecklist:      QGroundControl.settingsManager.appSettings.useChecklist.rawValue && QGroundControl.corePlugin.options.preFlightChecklistUrl.toString().length
