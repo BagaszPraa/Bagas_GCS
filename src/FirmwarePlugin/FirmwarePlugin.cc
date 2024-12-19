@@ -1090,7 +1090,8 @@ void FirmwarePlugin::_versionFileDownloadFinished(QString& remoteFile, QString& 
         QString currentVersionNumber = QString("%1.%2.%3").arg(vehicle->firmwareMajorVersion())
                                            .arg(vehicle->firmwareMinorVersion())
                                            .arg(vehicle->firmwarePatchVersion());
-        qgcApp()->showAppMessage(tr("Kendaraan tidak menjalankan firmware stabil terbaru! Berjalan %1, stabil terbaru adalah %2.").arg(currentVersionNumber, version));
+        // qgcApp()->showAppMessage(tr("Kendaraan tidak menjalankan firmware stabil terbaru! Berjalan %1, stabil terbaru adalah %2.").arg(currentVersionNumber, version));
+        // VERSI  FIRMWARE NOTIFIKASI
     }
 }
 

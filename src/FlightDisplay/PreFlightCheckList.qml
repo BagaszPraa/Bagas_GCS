@@ -22,7 +22,6 @@ ColumnLayout {
     property var _activeVehicle     : QGroundControl.multiVehicleManager.activeVehicle
     property bool allChecksPassed   : false
     property var vehicleCopy        : globals.activeVehicle
-    property bool statusCheckList   : false
 
     onVehicleCopyChanged: {
         if (checkListRepeater.model) {
@@ -124,18 +123,18 @@ ColumnLayout {
             text:               allChecksPassed ? qsTr("(Tercapai)") : qsTr("Dalam Proses")
             font.pointSize:     ScreenTools.mediumFontPointSize
         }
-        QGCButton {
-            width:              1.2 * ScreenTools.defaultFontPixelHeight
-            height:             1.2 * ScreenTools.defaultFontPixelHeight
-            Layout.alignment:   Qt.AlignVCenter
-            onClicked:          checkListRepeater.model.reset()
+        // QGCButton {
+        //     width:              1.2 * ScreenTools.defaultFontPixelHeight
+        //     height:             1.2 * ScreenTools.defaultFontPixelHeight
+        //     Layout.alignment:   Qt.AlignVCenter
+        //     onClicked:          checkListRepeater.model.reset()
 
-            QGCColoredImage {
-                source:         "/qmlimages/MapSyncBlack.svg"
-                color:          qgcPal.buttonText
-                anchors.fill:   parent
-            }
-        }
+        //     QGCColoredImage {
+        //         source:         "/qmlimages/MapSyncBlack.svg"
+        //         color:          qgcPal.buttonText
+        //         anchors.fill:   parent
+        //     }
+        // }
     }
     // Header/title of checklist
     RowLayout {

@@ -18,20 +18,68 @@ import QGroundControl.Controls      1.0
 import QGroundControl.FlightDisplay 1.0
 import QGroundControl.Vehicle       1.0
 import QGroundControl.FactSystem    1.0
+import QGroundControl.Controllers   1.0
+
 
 ColumnLayout {
+    id: _root
     spacing: 10
     Layout.fillWidth: true
+    // Q_FRAME_CLASS untuk VTOL_PLANE dan FRAME_CLASS untuk MULTICOPTER
+    property Fact _Q_enableCheck    : _activeVehicle.fixedWing? controllerss.getParameterFact(-1,"Q_ENABLE") : null // 0=disable 1=enable 2=enableVTOL
+    property Fact _frameClass       : getFrameClass()
     property var _activeVehicle     : QGroundControl.multiVehicleManager.activeVehicle
     property int motorPercent       : 30
     property int timeOut            : 3
+    property var motorConfig        : null
+    property var rotationDirections : getMotorDirections(_frameClass.rawValue)
 
-    FactPanelController {
-        id:             controller
+    FactPanelController { id: controller}
+    APMAirframeComponentController { id: controllerss }
+    Component.onCompleted: {
+        var request = new XMLHttpRequest();
+        request.open("GET", "/json/motorCheckConfig.json");
+        request.onreadystatechange = function() {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    motorConfig = JSON.parse(request.responseText);
+                }
+            }
+        }
+        request.send();
     }
+
+    function getFrameClass() {
+        if (_activeVehicle.fixedWing){
+            if (_Q_enableCheck.rawValue === 0){
+                buttonRow.visible = false;
+                return controllerss.getParameterFact(-1,"Q_ENABLE");
+            }
+            else {
+                return controllerss.getParameterFact(-1, "Q_FRAME_CLASS");
+            }
+        }
+        else if (_activeVehicle.multiRotor){
+            return controllerss.getParameterFact(-1, "FRAME_CLASS");
+        }
+        else {
+        }
+    }
+
+    function getMotorDirections(type) {
+       if (motorConfig === null) {
+           return [];
+       }
+       if (!motorConfig || !motorConfig[type]) {
+           return [];
+       }
+       return motorConfig[type];
+    }
+
+
     Timer {
            id: stopTimer
-           interval: 2000
+           interval: timeOut * 1000
            running: false
            repeat: false
            onTriggered: {
@@ -41,8 +89,8 @@ ColumnLayout {
     NumberAnimation {
         id: rotationAnimation
         property: "angle"
-        from: 0
-        to: 360
+        // from: 0
+        // to: 360
         duration: 1000
         loops: Animation.Infinite
         running: false
@@ -52,41 +100,27 @@ ColumnLayout {
         id: buttonRow
         spacing: 10
         width:  60 * ScreenTools.defaultFontPixelWidth
+        visible: true
+
         Repeater {
-            model:      controller.vehicle.motorCount == -1 ? 8 : controller.vehicle.motorCount
+            model:      controller.vehicle.motorCount == -1 ? 4 : controller.vehicle.motorCount
             Layout.fillWidth: true
             QGCButton {
-                enabled: _activeVehicle.readyToFly
+                enabled: _activeVehicle.readyToFly && !_activeVehicle.armed && !stopTimer.running
                 text: index + 1
                 width: 1.2 * ScreenTools.defaultFontPixelWidth
                 height: 1.2 * ScreenTools.defaultFontPixelHeight
+
                 onClicked: {
                     controller.vehicle.motorTest(index + 1, motorPercent, timeOut, true)
-                    if (index+1 == 1){
-                        cwRotate(motorRotate_1)
-                    }
-                    else if (index+1 == 2){
-                        ccwRotate(motorRotate_2)
-                    }
-                    else if (index+1 == 3){
-                        ccwRotate(motorRotate_3)
-                    }
-                    else if (index+1 == 4){
-                        cwRotate(motorRotate_4)
-                    }
-                    else if (index+1 == 5){
-                        cwRotate(motorRotate_5)
-                    }
-                    else if (index+1 == 6){
-                        ccwRotate(motorRotate_6)
-                    }
-                    else if (index+1 == 7){
-                        ccwRotate(motorRotate_7)
-                    }
-                    else if (index+1 == 8){
-                        cwRotate(motorRotate_8)
-                    }
+                    const rotationDirection = rotationDirections[index];
+                    const motorRotate = modelContainer.item["motorRotate_" + (index + 1)];
 
+                    if (rotationDirection === "cw") {
+                        cwRotate(motorRotate);
+                    } else if (rotationDirection === "ccw") {
+                        ccwRotate(motorRotate);
+                    }
                 }
             }
         }
@@ -102,146 +136,52 @@ ColumnLayout {
             }
         }
     }
-    function cwRotate(target) {
-        stopTimer.interval = 2000
+    function cwRotate(target) {//CW putar ke 90deg
+        stopTimer.interval = timeOut * 1000
         stopTimer.running = true
-        rotationAnimation.from = 0
-        rotationAnimation.to = 360
+        rotationAnimation.from = 0 + 90
+        rotationAnimation.to = 360 + 90
         rotationAnimation.target = target
         rotationAnimation.running = true
     }
     function ccwRotate(target) {
-        stopTimer.interval = 2000
+        stopTimer.interval = timeOut * 1000
         stopTimer.running = true
         rotationAnimation.from = 360
         rotationAnimation.to = 0
         rotationAnimation.target = target
         rotationAnimation.running = true
     }
-    Rectangle {
-        id: motorAnimasi
-        width:  60 * ScreenTools.defaultFontPixelWidth
-        height:  60 * ScreenTools.defaultFontPixelWidth
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-        color: "green"
 
-        Rectangle {
-            id: motor_1
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "blue"
-            anchors.top: motorAnimasi.top
-            anchors.left: motorAnimasi.left
-            transform: Rotation {
-                id: motorRotate_1
-                origin.x: motor_1.width / 2
-                origin.y: motor_1.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_2
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "blue"
-            anchors.top: motorAnimasi.top
-            anchors.right: motorAnimasi.right
-            transform: Rotation {
-                id: motorRotate_2
-                origin.x: motor_2.width / 2
-                origin.y: motor_2.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_3
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "blue"
-            anchors.bottom: motorAnimasi.bottom
-            anchors.left: motorAnimasi.left
-            transform: Rotation {
-                id: motorRotate_3
-                origin.x: motor_3.width / 2
-                origin.y: motor_3.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_4
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "blue"
-            anchors.bottom: motorAnimasi.bottom
-            anchors.right: motorAnimasi.right
-            transform: Rotation {
-                id: motorRotate_4
-                origin.x: motor_4.width / 2
-                origin.y: motor_4.height / 2
-                angle: 0
-            }
-        }
-        Rectangle {
-            id: motor_5
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "red"
-            anchors.top: motorAnimasi.top
-            anchors.left: motorAnimasi.left
-            transform: Rotation {
-                id: motorRotate_5
-                origin.x: motor_5.width / 2
-                origin.y: motor_5.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_6
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "red"
-            anchors.top: motorAnimasi.top
-            anchors.right: motorAnimasi.right
-            transform: Rotation {
-                id: motorRotate_6
-                origin.x: motor_6.width / 2
-                origin.y: motor_6.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_7
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "red"
-            anchors.bottom: motorAnimasi.bottom
-            anchors.left: motorAnimasi.left
-            transform: Rotation {
-                id: motorRotate_7
-                origin.x: motor_7.width / 2
-                origin.y: motor_7.height / 2
-                angle: 0
-            }
-        }
-
-        Rectangle {
-            id: motor_8
-            width: parent.width / 4
-            height: parent.height / 4
-            color: "red"
-            anchors.bottom: motorAnimasi.bottom
-            anchors.right: motorAnimasi.right
-            transform: Rotation {
-                id: motorRotate_8
-                origin.x: motor_8.width / 2
-                origin.y: motor_8.height / 2
-                angle: 0
-            }
+    function getCopterMotor(index) {// Ada Di FirmwarePlugin untik nilai index FRAME_CLASS
+        switch (index) {
+            case 1: return "/checklists/QuadCopter.qml";    // QUADCOPTER
+            // case 2: return "/checklists/Motor_3.qml";    // HEXACOPTER
+            // case 3: return "/checklists/Motor_4.qml";    // OCTACOPTER
+            case 4: return "/checklists/OctoQuad.qml";      // OCTOQUAD
+            default:
+                return "/checklists/UnknownFrame.qml";   // Default case for unknown index
         }
     }
+
+    function getQPlaneMotor(index) {
+        switch (index) {// Ada Di FirmwarePlugin untik nilai index Q_FRAME_CLASS
+            case 1: return "/checklists/QuadPlane.qml";         // QUADPLANE
+            default:
+                return "/checklists/UnknownFrame.qml";   // Default case for unknown index
+        }
+    }
+    Loader{
+        id: modelContainer
+        source: _activeVehicle.fixedWing? getQPlaneMotor(_frameClass.rawValue) : getCopterMotor(_frameClass.rawValue)
+    }
+    // QGCLabel {
+    //     text:               _Q_enableCheck.rawValue
+    //     color:              "white"
+    //     font.family:        ScreenTools.demiboldFontFamily
+    //     font.pointSize:     ScreenTools.mediumFontPointSize
+    //     horizontalAlignment:Text.AlignHCenter
+    //     Layout.alignment:   Qt.AlignHCenter
+    //     Layout.columnSpan:  2
+    // }
 }
