@@ -702,7 +702,6 @@ void Joystick::_handleAxis()
             emit axisValues(roll, pitch, yaw, throttle);
             uint16_t shortButtons = static_cast<uint16_t>(buttonPressedBits & 0xFFFF);
             _activeVehicle->sendJoystickDataThreadSafe(roll, pitch, yaw, throttle, shortButtons);
-            _activeVehicle->sendRCOverride(yaw, throttle, shortButtons);
         }
     }
 }

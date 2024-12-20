@@ -18,8 +18,7 @@ import QGroundControl.Vehicle       1.0
 
 Item {
     // The following properties must be passed in from the Loader
-    // property bool autoCenterThrottle - true: throttle will snap back to center when released
-
+    // property bool autoCenterThrottle : true //throttle will snap back to center when released
     property var _activeVehicle: QGroundControl.multiVehicleManager.activeVehicle
 
     Timer {
@@ -47,13 +46,15 @@ Item {
         yAxisReCenter:          autoCenterThrottle
     }
 
-    // JoystickThumbPad {
-    //     id:                     rightStick
-    //     anchors.rightMargin:    -xPositionDelta
-    //     anchors.bottomMargin:   -yPositionDelta
-    //     anchors.right:          parent.right
-    //     anchors.bottom:         parent.bottom
-    //     width:                  parent.height
-    //     height:                 parent.height
-    // }
+    JoystickThumbPad {
+        id:                     rightStick
+        anchors.rightMargin:    -xPositionDelta
+        anchors.bottomMargin:   -yPositionDelta
+        anchors.right:          parent.right
+        anchors.bottom:         parent.bottom
+        width:                  parent.height
+        height:                 parent.height
+        visible:                false
+
+    }
 }
