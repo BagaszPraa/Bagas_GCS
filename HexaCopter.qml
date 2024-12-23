@@ -13,8 +13,9 @@ Item {
     property alias motorRotate_2: motorRotate_2
     property alias motorRotate_3: motorRotate_3
     property alias motorRotate_4: motorRotate_4
+    property alias motorRotate_5: motorRotate_5
+    property alias motorRotate_6: motorRotate_6
     // Column {
-    //     z: 3
     //     anchors {
     //         bottom: motorAnimasi.bottom
     //         horizontalCenter: motorAnimasi.horizontalCenter
@@ -30,7 +31,7 @@ Item {
     //     Slider {
     //         id: widthDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 5.0
     //         value: 1.0
     //     }
 
@@ -42,30 +43,36 @@ Item {
     //     Slider {
     //         id: heightDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 5.0
     //         value: 1.0
     //     }
     // }
-    Rectangle{
-        id: rect_1
-        color: "transparent"
-        // border.color: "red"
-        width: parent.width / 1.14
-        height: parent.height / 1.20
-    }
+    // Rectangle{
+    //     id: rect_1
+    //     color: "transparent"
+    //     // border.color: "red"
+    //     width: parent.width
+    //     height: parent.height
+    // }
     Rectangle{
         id: rect_2
         color: "transparent"
         // border.color: "green"
-        width: rect_1.width / 1.16
-        height: rect_1.height / 1.10
-        anchors.bottom: rect_1.bottom
-        anchors.right: rect_1.right
+        width: parent.width / 1.55
+        height: parent.height / 1.10
+        anchors.centerIn: parent
     }
-
+    Rectangle{
+        id: rect_3
+        color: "transparent"
+        // border.color: "green"
+        width: parent.width / 1.0
+        height: parent.height / 3.60
+        anchors.centerIn: parent
+    }
     Image {
         id: motorAnimasi
-        source: "/qmlimages/Airframe/VTOLPlane" // Path ke gambar pic1.svg
+        source: "/qmlimages/Airframe/HexaRotorX" // Path ke gambar pic1.svg
         width: parent.width
         height: parent.height
         fillMode: Image.PreserveAspectFit
@@ -74,8 +81,8 @@ Item {
     Image {
         id: motor_1
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
+        width: parent.width / 3.55
+        height: parent.height / 3.65
         anchors.top: rect_2.top
         anchors.right: rect_2.right
         fillMode: Image.PreserveAspectFit
@@ -90,10 +97,10 @@ Item {
     Image {
         id: motor_2
         source: "/qmlimages/PropCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.bottom: rect_2.bottom
-        anchors.right: rect_2.right
+        width: parent.width / 3.55
+        height: parent.height / 3.65
+        anchors.top: rect_3.top
+        anchors.right: rect_3.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_2
@@ -106,10 +113,10 @@ Item {
     Image {
         id: motor_3
         source: "/qmlimages/PropCCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
+        width: parent.width / 3.55
+        height: parent.height / 3.65
         anchors.bottom: rect_2.bottom
-        anchors.left: rect_2.left
+        anchors.right: rect_2.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_3
@@ -122,15 +129,46 @@ Item {
     Image {
         id: motor_4
         source: "/qmlimages/PropCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.top: rect_2.top
+        width: parent.width / 3.55
+        height: parent.height / 3.65
+        anchors.bottom: rect_2.bottom
         anchors.left: rect_2.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_4
             origin.x: motor_4.width / 2
             origin.y: motor_4.height / 2
+            angle: 90
+        }
+    }
+    Image {
+        id: motor_5
+        source: "/qmlimages/PropCCW.svg"
+        width: parent.width / 3.55
+        height: parent.height / 3.65
+        anchors.top: rect_3.top
+        anchors.left: rect_3.left
+        fillMode: Image.PreserveAspectFit
+        transform: Rotation {
+            id: motorRotate_5
+            origin.x: motor_5.width / 2
+            origin.y: motor_5.height / 2
+            angle: 0
+        }
+    }
+
+    Image {
+        id: motor_6
+        source: "/qmlimages/PropCW.svg"
+        width: parent.width / 3.55
+        height: parent.height / 3.65
+        anchors.top: rect_2.top
+        anchors.left: rect_2.left
+        fillMode: Image.PreserveAspectFit
+        transform: Rotation {
+            id: motorRotate_6
+            origin.x: motor_6.width / 2
+            origin.y: motor_6.height / 2
             angle: 90
         }
     }

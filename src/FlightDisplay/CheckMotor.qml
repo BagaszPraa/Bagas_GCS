@@ -103,7 +103,7 @@ ColumnLayout {
         visible: true
 
         Repeater {
-            model:      controller.vehicle.motorCount == -1 ? 4 : controller.vehicle.motorCount
+            model:      controller.vehicle.motorCount == -1 ? 8 : controller.vehicle.motorCount
             Layout.fillWidth: true
             QGCButton {
                 enabled: _activeVehicle.readyToFly && !_activeVehicle.armed && !stopTimer.running
@@ -156,7 +156,7 @@ ColumnLayout {
     function getCopterMotor(index) {// Ada Di FirmwarePlugin untik nilai index FRAME_CLASS
         switch (index) {
             case 1: return "/checklists/QuadCopter.qml";    // QUADCOPTER
-            // case 2: return "/checklists/Motor_3.qml";    // HEXACOPTER
+            case 2: return "/checklists/HexaCopter.qml";    // HEXACOPTER
             // case 3: return "/checklists/Motor_4.qml";    // OCTACOPTER
             case 4: return "/checklists/OctoQuad.qml";      // OCTOQUAD
             default:
@@ -176,7 +176,7 @@ ColumnLayout {
         source: _activeVehicle.fixedWing? getQPlaneMotor(_frameClass.rawValue) : getCopterMotor(_frameClass.rawValue)
     }
     // QGCLabel {
-    //     text:               _Q_enableCheck.rawValue
+    //     text:               _activeVehicle.vehicleTypeName()
     //     color:              "white"
     //     font.family:        ScreenTools.demiboldFontFamily
     //     font.pointSize:     ScreenTools.mediumFontPointSize

@@ -13,6 +13,54 @@ Item {
     property alias motorRotate_2: motorRotate_2
     property alias motorRotate_3: motorRotate_3
     property alias motorRotate_4: motorRotate_4
+    // Column {
+    //     anchors {
+    //         bottom: motorAnimasi.bottom
+    //         horizontalCenter: motorAnimasi.horizontalCenter
+    //         margins: 20
+    //     }
+    //     spacing: 10
+
+    //     Text {
+    //         text: "Width Divider: " + widthDivider.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: widthDivider
+    //         from: 1.0
+    //         to: 5.0
+    //         value: 1.0
+    //     }
+
+    //     Text {
+    //         text: "Height Divider: " + heightDivider.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: heightDivider
+    //         from: 1.0
+    //         to: 5.0
+    //         value: 1.0
+    //     }
+    // }
+    // Rectangle{
+    //     id: rect_1
+    //     color: "transparent"
+    //     border.color: "red"
+    //     width: parent.width
+    //     height: parent.height
+    // }
+    // Rectangle{
+    //     id: rect_2
+    //     color: "transparent"
+    //     border.color: "green"
+    //     width: parent.width / widthDivider.value
+    //     height: parent.height / heightDivider.value
+    //     anchors.centerIn: parent
+
+    // }
     Image {
         id: motorAnimasi
         source: "/qmlimages/Airframe/QuadRotorX" // Path ke gambar pic1.svg
@@ -24,8 +72,8 @@ Item {
     Image {
         id: motor_1
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.top: motorAnimasi.top
         anchors.right: motorAnimasi.right
         fillMode: Image.PreserveAspectFit
@@ -40,8 +88,8 @@ Item {
     Image {
         id: motor_2
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.bottom: motorAnimasi.bottom
         anchors.right: motorAnimasi.right
         fillMode: Image.PreserveAspectFit
@@ -56,8 +104,8 @@ Item {
     Image {
         id: motor_3
         source: "/qmlimages/PropCCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.bottom: motorAnimasi.bottom
         anchors.left: motorAnimasi.left
         fillMode: Image.PreserveAspectFit
@@ -72,8 +120,8 @@ Item {
     Image {
         id: motor_4
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.top: motorAnimasi.top
         anchors.left: motorAnimasi.left
         fillMode: Image.PreserveAspectFit

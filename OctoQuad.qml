@@ -31,8 +31,8 @@ Item {
     Image {
         id: motor_1
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         z: 1
         anchors.top: motorAnimasi.top
         anchors.right: motorAnimasi.right
@@ -48,8 +48,8 @@ Item {
     Image {
         id: motor_2
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.top: motorAnimasi.top
         anchors.right: motorAnimasi.right
         fillMode: Image.PreserveAspectFit
@@ -64,8 +64,8 @@ Item {
     Image {
         id: motor_3
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         z: 1
         anchors.bottom: motorAnimasi.bottom
         anchors.right: motorAnimasi.right
@@ -81,8 +81,8 @@ Item {
     Image {
         id: motor_4
         source: "/qmlimages/PropCCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.bottom: motorAnimasi.bottom
         anchors.right: motorAnimasi.right
         fillMode: Image.PreserveAspectFit
@@ -96,8 +96,8 @@ Item {
     Image {
         id: motor_5
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         z: 1
         anchors.bottom: motorAnimasi.bottom
         anchors.left: motorAnimasi.left
@@ -113,8 +113,8 @@ Item {
     Image {
         id: motor_6
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.bottom: motorAnimasi.bottom
         anchors.left: motorAnimasi.left
         fillMode: Image.PreserveAspectFit
@@ -129,8 +129,8 @@ Item {
     Image {
         id: motor_7
         source: "/qmlimages/PropCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         z: 1
         anchors.top: motorAnimasi.top
         anchors.left: motorAnimasi.left
@@ -146,8 +146,8 @@ Item {
     Image {
         id: motor_8
         source: "/qmlimages/PropCCW.svg"
-        width: parent.width / 3
-        height: parent.height / 3
+        width: parent.width / 2.83
+        height: parent.height / 2.88
         anchors.top: motorAnimasi.top
         anchors.left: motorAnimasi.left
         fillMode: Image.PreserveAspectFit

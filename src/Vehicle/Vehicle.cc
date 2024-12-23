@@ -1933,6 +1933,7 @@ int Vehicle::motorCount()
         return 3;
     case MAV_TYPE_QUADROTOR:
     case MAV_TYPE_VTOL_TAILSITTER_QUADROTOR:
+    case MAV_TYPE_FIXED_WING:
         return 4;
     case MAV_TYPE_HEXAROTOR:
         return 6;

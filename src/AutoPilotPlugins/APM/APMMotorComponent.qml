@@ -70,7 +70,7 @@ SetupPage {
                             maximumValue:               100
                             stepSize:                   1
                             value:                      0
-                            updateValueWhileDragging:   true
+                            updateValueWhileDragging:   controller.vehicle.fixedWing? false : true
 
                             onValueChanged: {
                                 controller.vehicle.motorTest(index + 1, value, value == 0 ? 0 : _motorTimeoutSecs, true)
