@@ -82,7 +82,15 @@ ColumnLayout {
         }
         return
     }
-
+    function _updateModelCheckMotor() {
+        if(_activeVehicle.multiRotor) {
+            modelContainer.source = "/qml/CheckCopter.qml"
+        } else if(_activeVehicle.fixedWing) {
+            _activeVehicle.flightMode = "MANUAL"
+            modelContainer.source = "/qml/CheckQPlane.qml"
+        }
+        return
+    }
     // Component.onCompleted: {
     //     _updateModel()
     // }
@@ -149,15 +157,16 @@ ColumnLayout {
             enabled: !_activeVehicle.readyToFly
         }
         QGCButton {
-            text: qsTr("Motor Test")
+            text: _activeVehicle.fixedWing? qsTr("Motor & Servo Test") : qsTr("Motor Test")
             Layout.fillWidth: true // Mengisi lebar ColumnLayout
             height: 1.2 * ScreenTools.defaultFontPixelHeight
-            onClicked: modelContainer.source = "CheckMotor.qml"
+            onClicked: _updateModelCheckMotor()
         }
     }
     Loader {
          id: modelContainer
-         source: "CheckMotor.qml" // Muat komponen awal
+         source: _updateModelCheckMotor()
+         Layout.alignment: Qt.AlignHCenter
 
     }
     Repeater {

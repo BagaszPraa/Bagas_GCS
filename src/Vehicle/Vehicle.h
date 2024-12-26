@@ -498,6 +498,10 @@ public:
     void setJoystickEnabled         (bool enabled);
     void sendJoystickDataThreadSafe (float roll, float pitch, float yaw, float thrust, quint16 buttons);
     void sendRCOverride             (float yaw, float thrust, quint16 buttons);
+    void rcOverride                 (const float channelValues[19]);
+    Q_INVOKABLE void rcOverrideQml(const QVariantList& channelValues);
+
+
 
     // Property accesors
     int id() const{ return _id; }
