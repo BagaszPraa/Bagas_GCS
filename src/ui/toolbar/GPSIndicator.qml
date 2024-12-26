@@ -85,7 +85,16 @@ Item {
         fillMode:           Image.PreserveAspectFit
         sourceSize.height:  height
         opacity:            (_activeVehicle && _activeVehicle.gps.count.value >= 0) ? 1 : 0.5
-        color:              qgcPal.text
+        // color:              qgcPal.text
+        color:              gpsFixcolor(_activeVehicle.requiresGpsFix)
+    }
+    function gpsFixcolor(fixed) {
+        if (fixed){
+            return qgcPal.colorGreen
+        }
+        else{
+            return qgcPal.text
+        }
     }
 
     Column {
