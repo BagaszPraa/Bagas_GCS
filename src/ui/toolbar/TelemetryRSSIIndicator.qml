@@ -22,16 +22,10 @@ Item {
     id:             _root
     anchors.top:    parent.top
     anchors.bottom: parent.bottom
-    // width:          telemIcon.width * 1.1
-    // id:             _root
     width:          (telemIcon.width + telemValuesColumn.width) * 1.1
-    // anchors.top:    parent.top
-    // anchors.bottom: parent.bottom
-
-    property bool showIndicator: true
-
     property var  _activeVehicle:   QGroundControl.multiVehicleManager.activeVehicle
-    property bool _hasTelemetry:    _activeVehicle ? _activeVehicle.telemetryLRSSI !== 0 : false
+    property bool useTelemetryStatus: QGroundControl.settingsManager.appSettings.showTelemetryStatus.rawValue
+    property bool showIndicator: useTelemetryStatus
 
     Component {
         id: telemRSSIInfo
@@ -59,20 +53,6 @@ Item {
                     columnSpacing:      ScreenTools.defaultFontPixelWidth
                     columns:            2
                     anchors.horizontalCenter: parent.horizontalCenter
-                    // QGCLabel { text: qsTr("Local RSSI:") }
-                    // QGCLabel { text: _activeVehicle.telemetryLRSSI + " dBm"}
-                    // QGCLabel { text: qsTr("Remote RSSI:") }
-                    // QGCLabel { text: _activeVehicle.telemetryRRSSI + " dBm"}
-                    // QGCLabel { text: qsTr("RX Errors:") }
-                    // QGCLabel { text: _activeVehicle.telemetryRXErrors }
-                    // QGCLabel { text: qsTr("Errors Fixed:") }
-                    // QGCLabel { text: _activeVehicle.telemetryFixed }
-                    // QGCLabel { text: qsTr("TX Buffer:") }
-                    // QGCLabel { text: _activeVehicle.telemetryTXBuffer }
-                    // QGCLabel { text: qsTr("Local Noise:") }
-                    // QGCLabel { text: _activeVehicle.telemetryLNoise }
-                    // QGCLabel { text: qsTr("Remote Noise:") }
-                    // QGCLabel { text: _activeVehicle.telemetryRNoise }
                     QGCLabel { text: qsTr("Send Count:") }
                     QGCLabel { text: _activeVehicle.mavlinkSentCount }
                     QGCLabel { text: qsTr("Received Count:") }

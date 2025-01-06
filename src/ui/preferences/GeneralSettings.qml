@@ -97,6 +97,14 @@ Rectangle {
                             anchors.top:                parent.top
                             anchors.horizontalCenter:   parent.horizontalCenter
                             spacing:                    _margins
+                            FactCheckBox {
+                                id:             showTelemetryStats
+                                text:           qsTr("Show Telemetry Status")
+                                fact:           showTelemetryStatus
+                                visible:        showTelemetryStatus.visible && QGroundControl.corePlugin.options.preFlightChecklistUrl.toString().length
+
+                                property Fact showTelemetryStatus: QGroundControl.settingsManager.appSettings.showTelemetryStatus
+                            }
 
                             FactCheckBox {
                                 id:             useCheckList

@@ -139,6 +139,13 @@
     "default":     false
 },
 {
+    "name":             "showTelemetryStatus",
+    "shortDesc": "Show Telemetry Status",
+    "longDesc":  "If this option is enabled, Telemetry Status enabled.",
+    "type":             "bool",
+    "default":     true
+},
+{
     "name":             "enforceChecklist",
     "shortDesc": "Preflight checklist must pass before arming",
     "longDesc":  "If this option is enabled the preflight checklist must pass before arming.",
