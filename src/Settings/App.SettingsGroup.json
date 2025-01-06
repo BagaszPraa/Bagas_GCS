@@ -136,7 +136,7 @@
     "shortDesc": "Use preflight checklist",
     "longDesc":  "If this option is enabled the preflight checklist will be used.",
     "type":             "bool",
-    "default":     false
+    "default":     true
 },
 {
     "name":             "showTelemetryStatus",
@@ -150,7 +150,7 @@
     "shortDesc": "Preflight checklist must pass before arming",
     "longDesc":  "If this option is enabled the preflight checklist must pass before arming.",
     "type":             "bool",
-    "default":     false
+    "default":     true
 },
 {
     "name":                 "appFontPointSize",
@@ -176,7 +176,7 @@
     "shortDesc": "Show large compass",
     "longDesc":  "Show large compass on instrument panel",
     "type":             "bool",
-    "default":     false
+    "default":     true
 },
 {
     "name":             "savePath",
