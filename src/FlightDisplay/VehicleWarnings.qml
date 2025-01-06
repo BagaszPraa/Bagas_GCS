@@ -34,7 +34,7 @@ Rectangle {
             visible:                    _noGPSLockVisible
             color:                      "black"
             font.pointSize:             ScreenTools.largeFontPointSize
-            text:                       qsTr("No GPS Lock for Vehicle")
+            text:                       qsTr("Tidak ada GNSS Lock untuk Drone")
         }
 
         QGCLabel {
@@ -53,7 +53,7 @@ Rectangle {
             wrapMode:                   Text.WordWrap
             color:                      "black"
             font.pointSize:             ScreenTools.largeFontPointSize
-            text:                       qsTr("The vehicle has failed a pre-arm check. In order to arm the vehicle, resolve the failure.")
+            text:                       qsTr("Drone mengalami kegagalan dalam Pre-Arming Check. Agar Drone bisa di-Arming, selesaikan terlebih dahulu Pre-Flight Check.")
         }
     }
 }

@@ -65,7 +65,7 @@ Item {
     }
 
     QGCLabel {
-        text: qsTr("Double-click to exit full screen")
+        text: qsTr("Dua kali klik untuk keluar dari mode layar penuh (Fullscreen)")
         font.pointSize: ScreenTools.largeFontPointSize
         visible: QGroundControl.videoManager.fullScreen && flyViewVideoMouseArea.containsMouse
         anchors.centerIn: parent
