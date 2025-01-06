@@ -157,15 +157,15 @@ ApplicationWindow {
     }
 
     function showAnalyzeTool() {
-        showTool(qsTr("Analyze Tools"), "AnalyzeView.qml", "/qmlimages/Analyze.svg")
+        showTool(qsTr("Alat Analisis"), "AnalyzeView.qml", "/qmlimages/Analyze.svg")
     }
 
     function showSetupTool() {
-        showTool(qsTr("Vehicle Setup"), "SetupView.qml", "/qmlimages/Gears.svg")
+        showTool(qsTr("Pengaturan Drone"), "SetupView.qml", "/qmlimages/Gears.svg")
     }
 
     function showSettingsTool() {
-        showTool(qsTr("Application Settings"), "AppSettings.qml", "/res/QGCLogoWhite")
+        showTool(qsTr("Pengaturan ATBase"), "AppSettings.qml", "/res/QGCLogoWhite")
     }
     function rebootAction () {
         mainWindow.showMessageDialog(qsTr("Reboot Confirm"),
@@ -310,7 +310,7 @@ ApplicationWindow {
                         id:                 setupButton
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
-                        text:               qsTr("Vehicle Setup")
+                        text:               qsTr("Pengaturan Drone")
                         imageColor:         qgcPal.text
                         imageResource:      "/qmlimages/Gears.svg"
                         onClicked: {
@@ -325,7 +325,7 @@ ApplicationWindow {
                         id:                 analyzeButton
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
-                        text:               qsTr("Analyze Tools")
+                        text:               qsTr("Alat Analisis")
                         imageResource:      "/qmlimages/Analyze.svg"
                         imageColor:         qgcPal.text
                         visible:            QGroundControl.corePlugin.showAdvancedUI
@@ -341,7 +341,7 @@ ApplicationWindow {
                         id:                 settingsButton
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
-                        text:               qsTr("Application Settings")
+                        text:               qsTr("Pengaturan ATBase")
                         // imageResource:      "/res/ToolMenu"
                         imageResource:      "/res/QGCLogoFull"
                         imageColor:         qgcPal.text
@@ -357,7 +357,7 @@ ApplicationWindow {
                         id:                 rebootButton
                         height:             toolSelectDialog._toolButtonHeight
                         Layout.fillWidth:   true
-                        text:               qsTr("Reboot Vehicle")
+                        text:               qsTr("Reboot Drone")
                         imageResource:      "/res/PowerButton"
                         imageColor:         qgcPal.text
                         visible:            !QGroundControl.corePlugin.options.combineSettingsAndSetup && _activeVehicle && !_activeVehicle.armed
