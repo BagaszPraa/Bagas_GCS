@@ -5,6 +5,7 @@ import QtQuick.Layouts              1.12
 
 import QGroundControl               1.0
 import QGroundControl.ScreenTools   1.0
+import QGroundControl.Palette       1.0
 
 Item {
     // ABCDEFGH = 16473825|
@@ -19,23 +20,78 @@ Item {
     property alias motorRotate_6: motorRotate_6
     property alias motorRotate_7: motorRotate_7
     property alias motorRotate_8: motorRotate_8
+    // Column {
+    //     z: 3
+    //     anchors {
+    //         bottom: parent.bottom
+    //         horizontalCenter: parent.horizontalCenter
+    //         margins: 20
+    //     }
+    //     spacing: 10
 
+    //     Text {
+    //         text: "Width Divider: " + widthDivider.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: widthDivider
+    //         from: 1.0
+    //         to: 3.0
+    //         value: 1.0
+    //     }
+
+    //     Text {
+    //         text: "Height Divider: " + heightDivider.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: heightDivider
+    //         from: 1.0
+    //         to: 3.0
+    //         value: 1.0
+    //     }
+    // }
     Image {
         id: motorAnimasi
-        source: "/qmlimages/Airframe/QuadRotorX" // Path ke gambar pic1.svg
+        source: "/qmlimages/Frame_DF.svg" // Path ke gambar pic1.svg
+        width: parent.width / 1.10
+        height: parent.height / 1.10
+        anchors.centerIn: parent
+        fillMode: Image.PreserveAspectFit
+        z: 1
+    }
+    Rectangle{
+        id: background
+        color: qgcPal.windowShade
         width: parent.width
         height: parent.height
-        fillMode: Image.PreserveAspectFit
     }
-
+    Rectangle{
+        id: rect_1
+        color: "transparent"
+        // border.color: "green"
+        anchors.centerIn: parent
+        width: parent.width / 1.01
+        height: parent.height / 1.095
+    }
+    Rectangle{
+        id: rect_2
+        color: "transparent"
+        // border.color: "red"
+        anchors.centerIn: parent
+        width: parent.width / 1.07
+        height: parent.height / 1.11
+    }
     Image {
         id: motor_1
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
         width: parent.width / 2.83
         height: parent.height / 2.88
-        z: 1
-        anchors.top: motorAnimasi.top
-        anchors.right: motorAnimasi.right
+        z: 2
+        anchors.top: rect_1.top
+        anchors.right: rect_1.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_1
@@ -50,8 +106,8 @@ Item {
         source: "/qmlimages/PropCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.top: motorAnimasi.top
-        anchors.right: motorAnimasi.right
+        anchors.top: rect_1.top
+        anchors.right: rect_1.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_2
@@ -66,9 +122,9 @@ Item {
         source: "/qmlimages/PropCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        z: 1
-        anchors.bottom: motorAnimasi.bottom
-        anchors.right: motorAnimasi.right
+        z: 2
+        anchors.bottom: rect_2.bottom
+        anchors.right: rect_2.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_3
@@ -83,8 +139,8 @@ Item {
         source: "/qmlimages/PropCCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.bottom: motorAnimasi.bottom
-        anchors.right: motorAnimasi.right
+        anchors.bottom: rect_2.bottom
+        anchors.right: rect_2.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_4
@@ -98,9 +154,9 @@ Item {
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
         width: parent.width / 2.83
         height: parent.height / 2.88
-        z: 1
-        anchors.bottom: motorAnimasi.bottom
-        anchors.left: motorAnimasi.left
+        z: 2
+        anchors.bottom: rect_2.bottom
+        anchors.left: rect_2.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_5
@@ -115,8 +171,8 @@ Item {
         source: "/qmlimages/PropCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.bottom: motorAnimasi.bottom
-        anchors.left: motorAnimasi.left
+        anchors.bottom: rect_2.bottom
+        anchors.left: rect_2.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_6
@@ -131,9 +187,9 @@ Item {
         source: "/qmlimages/PropCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        z: 1
-        anchors.top: motorAnimasi.top
-        anchors.left: motorAnimasi.left
+        z: 2
+        anchors.top: rect_1.top
+        anchors.left: rect_1.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_7
@@ -148,8 +204,8 @@ Item {
         source: "/qmlimages/PropCCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.top: motorAnimasi.top
-        anchors.left: motorAnimasi.left
+        anchors.top: rect_1.top
+        anchors.left: rect_1.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_8

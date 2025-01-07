@@ -215,5 +215,6 @@
         <file alias="ZoomPlus.svg">src/FlightMap/Images/ZoomPlus.svg</file>
         <file alias="PropCCW.svg">resources/PropCCW.svg</file>
         <file alias="PropCW.svg">resources/PropCW.svg</file>
+        <file alias="Frame_DF.svg">resources/Frame_DF.svg</file>
     </qresource>
 </RCC>
