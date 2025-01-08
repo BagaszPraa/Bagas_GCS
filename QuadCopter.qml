@@ -50,18 +50,11 @@ Item {
     //         value: 1.0
     //     }
     // }
-    Rectangle{
-        id: background
-        color: qgcPal.windowShade
-        width: parent.width
-        height: parent.height
-        z: -1
-    }
     Image {
         id: motorAnimasi
         source: "/qmlimages/Frame_DF.svg" // Path ke gambar pic1.svg
-        width: parent.width / 1.10
-        height: parent.height / 1.10
+        width: parent.width
+        height: parent.height
         anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
     }
@@ -70,16 +63,8 @@ Item {
         color: "transparent"
         // border.color: "green"
         anchors.centerIn: parent
-        width: parent.width / 1.01
-        height: parent.height / 1.095
-    }
-    Rectangle{
-        id: rect_2
-        color: "transparent"
-        // border.color: "red"
-        anchors.centerIn: parent
-        width: parent.width / 1.07
-        height: parent.height / 1.11
+        width: parent.width / 1.04
+        height: parent.height / 1.10
     }
     Image {
         id: motor_1
@@ -102,8 +87,8 @@ Item {
         source: "/qmlimages/PropCW.svg"
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.bottom: rect_2.bottom
-        anchors.right: rect_2.right
+        anchors.bottom: rect_1.bottom
+        anchors.right: rect_1.right
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_2
@@ -118,8 +103,8 @@ Item {
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
         width: parent.width / 2.83
         height: parent.height / 2.88
-        anchors.bottom: rect_2.bottom
-        anchors.left: rect_2.left
+        anchors.bottom: rect_1.bottom
+        anchors.left: rect_1.left
         fillMode: Image.PreserveAspectFit
         transform: Rotation {
             id: motorRotate_3
