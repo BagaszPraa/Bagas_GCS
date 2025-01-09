@@ -216,5 +216,7 @@
         <file alias="PropCCW.svg">resources/PropCCW.svg</file>
         <file alias="PropCW.svg">resources/PropCW.svg</file>
         <file alias="Frame_DF.png">resources/Frame_DF.png</file>
+        <file alias="AT250_TOP.png">resources/AT250_TOP.png</file>
+        <file alias="AT250_BACK.png">resources/AT250_BACK.png</file>
     </qresource>
 </RCC>

@@ -7,8 +7,9 @@ import QGroundControl               1.0
 import QGroundControl.ScreenTools   1.0
 
 Item {
-    width:  60 * ScreenTools.defaultFontPixelWidth
-    height:  60 * ScreenTools.defaultFontPixelWidth
+    width:  80 * ScreenTools.defaultFontPixelWidth
+    height:  80 * ScreenTools.defaultFontPixelWidth
+
     property bool isPlaneCheck : false
     property alias motorRotate_1: motorRotate_1
     property alias motorRotate_2: motorRotate_2
@@ -32,7 +33,7 @@ Item {
     //     Slider {
     //         id: widthDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 5.0
     //         value: 1.0
     //     }
 
@@ -44,42 +45,69 @@ Item {
     //     Slider {
     //         id: heightDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 4.0
     //         value: 1.0
     //     }
+    //     Text {
+    //         text: "geser posisi Divider: " + geserx.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: geserx
+    //         from: 0
+    //         to: parent.width * 2
+    //         value: 0
+    //     }
+    //     Text {
+    //         text: "geser posisi Divider: " + gesery.value.toFixed(2)
+    //         color: "red"
+    //         z: 2
+    //     }
+    //     Slider {
+    //         id: gesery
+    //         from: 0
+    //         to: parent.height * 2
+    //         value: 0
+    //     }
     // }
-    Rectangle{
-        id: rect_1
-        color: "transparent"
-        // border.color: "red"
-        width: parent.width / 1.14
-        height: parent.height / 1.20
-    }
-    Rectangle{
-        id: rect_2
-        color: "transparent"
-        // border.color: "green"
-        width: rect_1.width / 1.16
-        height: rect_1.height / 1.10
-        anchors.bottom: rect_1.bottom
-        anchors.right: rect_1.right
-    }
 
     Image {
         id: motorAnimasi
-        source: isPlaneCheck? "/qmlimages/Airframe/VTOLPlaneOcto":"/qmlimages/Airframe/VTOLPlane" // Path ke gambar pic1.svg
+        source: isPlaneCheck? "/qmlimages/AT250_BACK.png":"/qmlimages/AT250_TOP.png" // Path ke gambar pic1.svg
         width: parent.width
         height: parent.height
+        anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
+        z: 1
+    }
+    Rectangle{
+        id: base_rect_1
+        color: "transparent"
+        // border.color: "red"
+        width: parent.width / 2.84
+        height: parent.height / 3.33
+        x: 207.50
+        y: 191.10
+        z: 3
+    }
+    Rectangle{
+        id: rect_1
+        color: "transparent"
+        // border.color: "green"
+        width: parent.width / 1.86
+        height: parent.height / 2.13
+        anchors.centerIn: base_rect_1
+        z : 3
     }
 
     Image {
         id: motor_1
         source: "/qmlimages/PropCCW.svg" // Path ke gambar pic2.svg
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.top: rect_2.top
-        anchors.right: rect_2.right
+        width: rect_1.width / 2.91
+        height: rect_1.height / 2.80
+        anchors.top: rect_1.top
+        anchors.right: rect_1.right
         fillMode: Image.PreserveAspectFit
         visible: !isPlaneCheck
         transform: Rotation {
@@ -93,12 +121,13 @@ Item {
     Image {
         id: motor_2
         source: "/qmlimages/PropCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.bottom: rect_2.bottom
-        anchors.right: rect_2.right
+        width: rect_1.width / 2.91
+        height: rect_1.height / 2.80
+        anchors.bottom: rect_1.bottom
+        anchors.right: rect_1.right
         fillMode: Image.PreserveAspectFit
         visible: !isPlaneCheck
+        z:2
         transform: Rotation {
             id: motorRotate_2
             origin.x: motor_2.width / 2
@@ -110,12 +139,13 @@ Item {
     Image {
         id: motor_3
         source: "/qmlimages/PropCCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.bottom: rect_2.bottom
-        anchors.left: rect_2.left
+        width: rect_1.width / 2.91
+        height: rect_1.height / 2.80
+        anchors.bottom: rect_1.bottom
+        anchors.left: rect_1.left
         fillMode: Image.PreserveAspectFit
         visible: !isPlaneCheck
+        z:2
         transform: Rotation {
             id: motorRotate_3
             origin.x: motor_3.width / 2
@@ -127,10 +157,10 @@ Item {
     Image {
         id: motor_4
         source: "/qmlimages/PropCW.svg"
-        width: rect_2.width / 2.91
-        height: rect_2.height / 2.80
-        anchors.top: rect_2.top
-        anchors.left: rect_2.left
+        width: rect_1.width / 2.91
+        height: rect_1.height / 2.80
+        anchors.top: rect_1.top
+        anchors.left: rect_1.left
         fillMode: Image.PreserveAspectFit
         visible: !isPlaneCheck
         transform: Rotation {
@@ -143,11 +173,13 @@ Item {
     Image {
         id: throttle
         source: "/qmlimages/PropCW.svg"
-        width: rect_2.width / 2
-        height: rect_2.height / 2
-        anchors.centerIn: rect_2
+        width: parent.width / 5
+        height: parent.height / 5
+        x: 257.50
+        y: 235.20
         fillMode: Image.PreserveAspectFit
         visible: isPlaneCheck
+        z:2
         transform: Rotation {
             id: throttleRotate
             origin.x: throttle.width / 2
