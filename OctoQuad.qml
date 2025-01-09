@@ -37,7 +37,7 @@ Item {
     //     Slider {
     //         id: widthDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 2.0
     //         value: 1.0
     //     }
 
@@ -49,13 +49,13 @@ Item {
     //     Slider {
     //         id: heightDivider
     //         from: 1.0
-    //         to: 3.0
+    //         to: 2.0
     //         value: 1.0
     //     }
     // }
     Image {
         id: motorAnimasi
-        source: "/qmlimages/Frame_DF.svg" // Path ke gambar pic1.svg
+        source: "/qmlimages/Frame_DF.png" // Path ke gambar pic1.svg
         width: parent.width
         height: parent.height
         anchors.centerIn: parent
@@ -67,8 +67,8 @@ Item {
         color: "transparent"
         // border.color: "green"
         anchors.centerIn: parent
-        width: parent.width / 1.04
-        height: parent.height / 1.10
+        width: parent.width / 1.03
+        height: parent.height / 1.08
     }
     Image {
         id: motor_1
