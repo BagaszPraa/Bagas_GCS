@@ -15,8 +15,8 @@ import QGroundControl.Vehicle   1.0
 
 // This class stores the data and functions of the check list but NOT the GUI (which is handled somewhere else).
 PreFlightCheckButton {
-    name:                           qsTr("Baterai")
-    manualText:                     qsTr("Konektor baterai terpasang dengan kuat dan aman?")
+    name:                           qsTr("Baterai Drone")
+    manualText:                     qsTr("Apakah konektor baterai terpasang dengan kuat dan aman? Tidak kembung? Kondisi daya penuh?")
     telemetryFailure:               _batLow
     telemetryTextFailure:           allowTelemetryFailureOverride ?
                                         qsTr("Peringatan - Daya baterai di bawah %1%.").arg(failurePercent) :

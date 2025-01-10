@@ -14,9 +14,9 @@ import QGroundControl.Controls  1.0
 import QGroundControl.Vehicle   1.0
 
 PreFlightCheckButton {
-    name:                   qsTr("Remote Control")
-    manualText:             qsTr("Menerima sinyal. Lakukan uji jangkauan dan konfirmasi.")
-    telemetryTextFailure:   qsTr("Tidak ada sinyal atau konfigurasi autopilot-RC tidak valid. Periksa RC dan konsol.")
+    name:                   qsTr("Remote Control (RC)")
+    manualText:             qsTr("Menerima sinyal? Lakukan uji jangkauan dan konfirmasi")
+    telemetryTextFailure:   qsTr("Tidak ada sinyal atau konfigurasi autopilot-RC tidak valid. Periksa RC dan pengaturan.")
     telemetryFailure:       false//_unhealthySensors & Vehicle.SysStatusSensorRCReceiver
 
     property int _unhealthySensors: globals.activeVehicle ? globals.activeVehicle.sensorsUnhealthyBits : 0

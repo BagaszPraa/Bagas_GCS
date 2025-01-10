@@ -22,49 +22,73 @@ Item {
     PreFlightCheckModel {
         id:     listModel
         PreFlightCheckGroup {
-            name: qsTr("Pemeriksaan Awal Fixed-Wing")
-
+            name: qsTr("Pemeriksaan Fisik")
             PreFlightCheckButton {
-                name:           qsTr("Komponen")
-                manualText:     qsTr("Propeller aman? Wing aman? Tail aman?")
+                name:           qsTr("Fuselage")
+                manualText:     qsTr("Apakah Fuselage dalam kondisi baik dan layak terbang?")
             }
-
-            PreFlightBatteryCheck {
-                failurePercent:                 40
-                allowFailurePercentOverride:    false
+            PreFlightCheckButton {
+                name:           qsTr("Wing")
+                manualText:     qsTr("Apakah Wing sudah terpasang dengan baik? Tidak ada kendor? kondisi baik dan layak terbang?")
             }
-
+            PreFlightCheckButton {
+                name:           qsTr("Tail")
+                manualText:     qsTr("Apakah Tail sudah terpasang dengan baik? Tidak ada kendor? kondisi baik dan layak terbang?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Motor")
+                manualText:     qsTr("Apakah motor sudah terpasang dengan kuat? Tidak ada kendor? Kondisi layak terbang?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Propeller")
+                manualText:     qsTr("Apakah propeller (baling-baling) sudah terpasang dengan kuat? Tidak ada kendor? Kondisi layak terbang?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Kabel")
+                manualText:     qsTr("Apakah koneksi kabel tidak ada yang longgar, terkelupas dan putus?")
+            }
+        }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Sistem")
             PreFlightSensorsHealthCheck {
             }
-
             PreFlightGPSCheck {
                 failureSatCount:        9
                 allowOverrideSatCount:  true
             }
-
             PreFlightRCCheck {
             }
-        }
-
-        PreFlightCheckGroup {
-            name: qsTr("Arming Pesawat")
-
-            PreFlightCheckButton {
-                name:            qsTr("Aktuator")
-                manualText:      qsTr("Gerakkan semua kontrol.Apakah bekerja dengan baik?")
-            }
-
-            PreFlightCheckButton {
-                name:            qsTr("Motor")
-                manualText:      qsTr("Baling-balingnya bebas? Lalu, naikkan Throttle dengan perlahan. Berfungsi dengan baik?")
-            }
-
-            PreFlightCheckButton {
-                name:           qsTr("Misi")
-                manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
-            }
-
             PreFlightSoundCheck {
+            }
+        }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Baterai")
+            PreFlightBatteryCheck {
+                failurePercent:                 40
+                allowFailurePercentOverride:    false
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Baterai RC")
+                manualText:     qsTr("Apakah baterai RC sudah terisi daya penuh?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Baterai GCS (Ground Control Station)")
+                manualText:     qsTr("Apakah baterai GCS sudah terisi daya penuh?")
+            }
+        }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Payload")
+            PreFlightCheckButton {
+                name:           qsTr("Daya")
+                manualText:     qsTr("Apakah Payload sudah dinyalakan?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Kondisi")
+                manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar? dalam kondisi baik?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Fungsi")
+                manualText:     qsTr("Lakukan uji coba fungsi dari Payload yang digunakan")
             }
         }
 
@@ -73,13 +97,13 @@ Item {
 
             // Check list item group 2 - Final checks before launch
             PreFlightCheckButton {
-                name:           qsTr("Payload")
-                manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar?")
+                name:           qsTr("Misi")
+                manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
             }
 
             PreFlightCheckButton {
                 name:           qsTr("Angin & Cuaca")
-                manualText:     qsTr("Apakah aman untuk menerbangkan Pesawat")
+                manualText:     qsTr("Apakah aman untuk menerbangkan Multirotor")
             }
 
             PreFlightCheckButton {

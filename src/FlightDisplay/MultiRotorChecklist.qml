@@ -22,11 +22,26 @@ Item {
     PreFlightCheckModel {
         id:     listModel
         PreFlightCheckGroup {
-            name: qsTr("Pengecekan Sensor & Baterai")
-            PreFlightBatteryCheck {
-                failurePercent:                 40
-                allowFailurePercentOverride:    false
+            name: qsTr("Pemeriksaan Fisik")
+            PreFlightCheckButton {
+                name:           qsTr("Frame")
+                manualText:     qsTr("Apakah frame sudah terpasang dengan baik? Tidak ada kendor? Kondisi layak terbang?")
             }
+            PreFlightCheckButton {
+                name:           qsTr("Motor")
+                manualText:     qsTr("Apakah motor sudah terpasang dengan kuat? Tidak ada kendor? Kondisi layak terbang?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Propeller")
+                manualText:     qsTr("Apakah propeller (baling-baling) sudah terpasang dengan kuat? Tidak ada kendor? Kondisi layak terbang?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Kabel")
+                manualText:     qsTr("Apakah koneksi kabel tidak ada yang longgar, terkelupas dan putus?")
+            }
+        }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Sistem")
             PreFlightSensorsHealthCheck {
             }
             PreFlightGPSCheck {
@@ -38,6 +53,36 @@ Item {
             PreFlightSoundCheck {
             }
         }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Baterai")
+            PreFlightBatteryCheck {
+                failurePercent:                 40
+                allowFailurePercentOverride:    false
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Baterai RC")
+                manualText:     qsTr("Apakah baterai RC sudah terisi daya penuh?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Baterai GCS (Ground Control Station)")
+                manualText:     qsTr("Apakah baterai GCS sudah terisi daya penuh?")
+            }
+        }
+        PreFlightCheckGroup {
+            name: qsTr("Pemeriksaan Payload")
+            PreFlightCheckButton {
+                name:           qsTr("Daya")
+                manualText:     qsTr("Apakah Payload sudah dinyalakan?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Kondisi")
+                manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar? dalam kondisi baik?")
+            }
+            PreFlightCheckButton {
+                name:           qsTr("Fungsi")
+                manualText:     qsTr("Lakukan uji coba fungsi dari Payload yang digunakan")
+            }
+        }
 
         PreFlightCheckGroup {
             name: qsTr("Persiapan terakhir sebelum terbang")
@@ -46,10 +91,6 @@ Item {
             PreFlightCheckButton {
                 name:           qsTr("Misi")
                 manualText:     qsTr("Harap konfirmasikan bahwa misi tersebut valid (titik arah valid, tidak ada tabrakan medan).")
-            }
-            PreFlightCheckButton {
-                name:           qsTr("Payload")
-                manualText:     qsTr("Apakah Payload Sudah Terpasang dengan Benar?")
             }
 
             PreFlightCheckButton {

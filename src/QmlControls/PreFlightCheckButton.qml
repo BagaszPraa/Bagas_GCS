@@ -51,7 +51,7 @@ QGCButton {
     property string _text: "<b>" + name +"</b>: " +
                            ((_telemetryState !== _statePassed) ?
                                telemetryTextFailure :
-                               (_manualState !== _statePassed ? manualText : qsTr("Passed")))
+                               (_manualState !== _statePassed ? manualText : qsTr("Sukses")))
     property color  _color: _telemetryState === _statePassed && _manualState === _statePassed ?
                                 _passedColor :
                                 (_telemetryState == _stateFailed ?
