@@ -23,7 +23,7 @@ ToolStripActionList {
         },
         PreFlightCheckListShowAction {
             onTriggered: displayPreFlightChecklist()
-            enabled: _activeVehicle && _activeVehicle.readyToFly ? false : true
+            enabled: _activeVehicle && !_activeVehicle.readyToFly
         },
         GuidedActionTakeoff { },
         GuidedActionLand { },
