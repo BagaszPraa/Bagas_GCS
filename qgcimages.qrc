@@ -216,7 +216,13 @@
         <file alias="PropCCW.svg">resources/PropCCW.svg</file>
         <file alias="PropCW.svg">resources/PropCW.svg</file>
         <file alias="Frame_DF.png">resources/Frame_DF.png</file>
-        <file alias="AT250_TOP.png">resources/AT250_TOP.png</file>
-        <file alias="AT250_BACK.png">resources/AT250_BACK.png</file>
+        <file alias="AT250_TOP.png">resources/AT250/AT250_TOP.png</file>
+        <file alias="AT250_BACK.png">resources/AT250/AT250_BACK.png</file>
+        <file alias="AT250_RLEFT.png">resources/AT250/AT250_RLEFT.png</file>
+        <file alias="AT250_RRIGHT.png">resources/AT250/AT250_RRIGHT.png</file>
+        <file alias="AT250_NOSEUP.png">resources/AT250/AT250_NOSEUP.png</file>
+        <file alias="AT250_NOSEDOWN.png">resources/AT250/AT250_NOSEDOWN.png</file>
+        <file alias="AT250_YAWLEFT.png">resources/AT250/AT250_YAWLEFT.png</file>
+        <file alias="AT250_YAWRIGHT.png">resources/AT250/AT250_YAWRIGHT.png</file>
     </qresource>
 </RCC>

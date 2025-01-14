@@ -102,7 +102,8 @@ ColumnLayout {
        repeat: false
        onTriggered: {
            rotationAnimation.running = false;
-           rcoverrideTimer.stop()
+           rcoverrideTimer.stop();
+           modelContainer.item.indexServoCheck = 7
        }
    }
     Timer {
@@ -195,6 +196,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 1;
                 channelValues[1]= 1000
                 channelValues[2]= 1500
                 channelValues[3]= 1000
@@ -209,6 +211,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 2;
                 channelValues[1]= 2000
                 channelValues[2]= 1500
                 channelValues[3]= 1000
@@ -223,6 +226,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 3;
                 channelValues[1]= 1500
                 channelValues[2]= 1000
                 channelValues[3]= 1000
@@ -237,6 +241,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 4;
                 channelValues[1]= 1500
                 channelValues[2]= 2000
                 channelValues[3]= 1000
@@ -251,6 +256,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 5;
                 channelValues[1]= 1500
                 channelValues[2]= 1500
                 channelValues[3]= 1000
@@ -265,6 +271,7 @@ ColumnLayout {
             onClicked: {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
+                modelContainer.item.indexServoCheck = 6;
                 channelValues[1]= 1500
                 channelValues[2]= 1500
                 channelValues[3]= 1000

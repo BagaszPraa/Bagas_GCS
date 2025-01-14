@@ -16,6 +16,7 @@ Item {
     property alias motorRotate_3: motorRotate_3
     property alias motorRotate_4: motorRotate_4
     property alias throttleRotate: throttleRotate
+    property int indexServoCheck: 7
     // Column {
     //     z: 3
     //     anchors {
@@ -71,16 +72,29 @@ Item {
     //         value: 0
     //     }
     // }
-
+    function getImage(index) {
+        switch (index) {
+            case 1: return "/qmlimages/AT250_RLEFT.png";    // ROLL LEFT
+            case 2: return "/qmlimages/AT250_RRIGHT.png";    // ROLL RIGHT
+            case 3: return "/qmlimages/AT250_NOSEDOWN.png";    // NOSEDOWN
+            case 4: return "/qmlimages/AT250_NOSEUP.png";    // NOSEUP
+            case 5: return "/qmlimages/AT250_YAWLEFT.png";    // YAWLEFT
+            case 6: return "/qmlimages/AT250_YAWRIGHT.png";    // YAWRIGHT
+            case 7: return "/qmlimages/AT250_BACK.png";    // NONE
+            default:
+                return "/qmlimages/AT250_BACK.png";   // NONE
+        }
+    }
     Image {
         id: motorAnimasi
-        source: isPlaneCheck? "/qmlimages/AT250_BACK.png":"/qmlimages/AT250_TOP.png" // Path ke gambar pic1.svg
+        source: isPlaneCheck? getImage(indexServoCheck):"/qmlimages/AT250_TOP.png" // Path ke gambar pic1.svg
         width: parent.width
         height: parent.height
         anchors.centerIn: parent
         fillMode: Image.PreserveAspectFit
         z: 1
     }
+
     Rectangle{
         id: base_rect_1
         color: "transparent"
@@ -176,9 +190,9 @@ Item {
         width: parent.width / 5
         height: parent.height / 5
         x: 257.50
-        y: 235.20
+        y: 253.80
         fillMode: Image.PreserveAspectFit
-        visible: isPlaneCheck
+        visible: isPlaneCheck && indexServoCheck !== 5 && indexServoCheck !== 6
         z:2
         transform: Rotation {
             id: throttleRotate
