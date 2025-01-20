@@ -85,13 +85,13 @@ Item {
         }
     }
 
-    MouseArea {
-        id: flyViewVideoMouseArea
-        anchors.fill:       parent
-        enabled:            pipState.state === pipState.fullState
-        hoverEnabled: true
-        onDoubleClicked:    QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
-    }
+    // MouseArea {
+    //     id: flyViewVideoMouseArea
+    //     anchors.fill:       parent
+    //     enabled:            pipState.state === pipState.fullState
+    //     hoverEnabled: true
+    //     onDoubleClicked:    QGroundControl.videoManager.fullScreen = !QGroundControl.videoManager.fullScreen
+    // }
 
     ProximityRadarVideoView{
         anchors.fill:   parent
