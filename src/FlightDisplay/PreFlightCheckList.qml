@@ -88,6 +88,9 @@ ColumnLayout {
         } else if(_activeVehicle.fixedWing) {
             _activeVehicle.flightMode = "MANUAL"
             modelContainer.source = "/qml/CheckQPlane.qml"
+        } else if(_activeVehicle.vtol) {
+            _activeVehicle.flightMode = "MANUAL"
+            modelContainer.source = "/qml/CheckQPlane.qml"
         }
         return
     }
@@ -157,7 +160,7 @@ ColumnLayout {
             enabled: !_activeVehicle.readyToFly
         }
         QGCButton {
-            text: _activeVehicle.fixedWing? qsTr("Motor & Servo Test") : qsTr("Motor Test")
+            text: _activeVehicle.fixedWing || _activeVehicle.vtol ? qsTr("Motor & Servo Test") : qsTr("Motor Test")
             Layout.fillWidth: true // Mengisi lebar ColumnLayout
             height: 1.2 * ScreenTools.defaultFontPixelHeight
             onClicked: _updateModelCheckMotor()

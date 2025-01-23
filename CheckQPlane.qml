@@ -158,7 +158,7 @@ ColumnLayout {
             Layout.fillWidth: true
             enabled: _activeVehicle.readyToFly && !_activeVehicle.armed && !stopTimer.running
             height: 1.2 * ScreenTools.defaultFontPixelHeight
-            visible: _activeVehicle.fixedWing
+            visible: _activeVehicle.fixedWing || _activeVehicle.vtol
             onClicked: {
                 modelContainer.item.isPlaneCheck = true;
                 cwRotate(modelContainer.item.throttleRotate);
@@ -187,7 +187,7 @@ ColumnLayout {
         id: servotest
         spacing: 10
         width:  60 * ScreenTools.defaultFontPixelWidth
-        visible: _activeVehicle.fixedWing
+        visible: _activeVehicle.fixedWing || _activeVehicle.vtol
         enabled: _activeVehicle.readyToFly && !_activeVehicle.armed && !stopTimer.running
         QGCButton {
             text: qsTr("Roll Left")
