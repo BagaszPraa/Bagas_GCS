@@ -25,7 +25,8 @@ ColumnLayout {
     spacing: 10
     Layout.fillWidth: true
     // Q_FRAME_CLASS untuk VTOL_PLANE dan FRAME_CLASS untuk MULTICOPTER
-    property Fact _CH3_Switch       : controller.getParameterFact(-1, "SERVO3_FUNCTION")//untuk setparam SERVO3 out ke RCIN3
+    property int _no :65535
+    property Fact _CH3_Switch       : controller.getParameterFact(-1, "SERVO4_FUNCTION")//untuk setparam SERVO4 out ke RCIN3
     property Fact _Q_enableCheck    : controllerss.getParameterFact(-1,"Q_ENABLE")// 0=disable 1=enable 2=enableVTOL
     property Fact _frameClass       : getFrameClass()
     property var _activeVehicle     : QGroundControl.multiVehicleManager.activeVehicle
@@ -33,7 +34,7 @@ ColumnLayout {
     property int timeOut            : 2
     property var motorConfig        : null
     property var rotationDirections : getMotorDirections(_frameClass.rawValue)
-    property var channelValues      : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    property var channelValues      : [_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no,_no]
 
     FactPanelController { id: controller}
     APMAirframeComponentController { id: controllerss }
@@ -139,7 +140,7 @@ ColumnLayout {
                 text: index + 1
                 Layout.fillWidth: true
                 height: 1.2 * ScreenTools.defaultFontPixelHeight
-
+                visible: _activeVehicle.vtol
                 onClicked: {
                     controller.vehicle.motorTest(index + 1, motorPercent, timeOut, true)
                     const rotationDirection = rotationDirections[index];
@@ -197,10 +198,10 @@ ColumnLayout {
                 stopTimer.start();
                 modelContainer.item.isPlaneCheck = true;
                 modelContainer.item.indexServoCheck = 1;
-                channelValues[1]= 1000
-                channelValues[2]= 1500
-                channelValues[3]= 1000
-                channelValues[4]= 1500
+                channelValues[1]= 1000  //ROLL
+                channelValues[2]= 1500  //PITCH
+                channelValues[3]= 1000  //throttle
+                channelValues[4]= 1500  //YAW
                 rcoverrideTimer.start()
             }
         }

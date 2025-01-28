@@ -129,25 +129,25 @@ RowLayout {
     }
     //USER
 
-    Item {
-        Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * ScreenTools.largeFontPointRatio * 1.5
-        height:                 1
-        visible:                vtolModeLabel.visible
-    }
+    // Item {
+    //     Layout.preferredWidth:  ScreenTools.defaultFontPixelWidth * ScreenTools.largeFontPointRatio * 1.5
+    //     height:                 1
+    //     visible:                vtolModeLabel.visible
+    // }
 
-    QGCLabel {
-        id:                     vtolModeLabel
-        Layout.preferredHeight: _root.height
-        verticalAlignment:      Text.AlignVCenter
-        text:                   _vtolInFWDFlight ? qsTr("FW(vtol)") : qsTr("MR(vtol)")
-        font.pointSize:         ScreenTools.largeFontPointSize
-        visible:                _activeVehicle ? _activeVehicle.vtol && _vehicleInAir : false
+    // QGCLabel {
+    //     id:                     vtolModeLabel
+    //     Layout.preferredHeight: _root.height
+    //     verticalAlignment:      Text.AlignVCenter
+    //     text:                   _vtolInFWDFlight ? qsTr("FW(vtol)") : qsTr("MR(vtol)")
+    //     font.pointSize:         ScreenTools.largeFontPointSize
+    //     visible:                _activeVehicle ? _activeVehicle.vtol && _vehicleInAir : false
 
-        QGCMouseArea {
-            anchors.fill:   parent
-            onClicked:      mainWindow.showIndicatorPopup(vtolModeLabel, vtolTransitionComponent)
-        }
-    }
+    //     QGCMouseArea {
+    //         anchors.fill:   parent
+    //         onClicked:      mainWindow.showIndicatorPopup(vtolModeLabel, vtolTransitionComponent)
+    //     }
+    // }
 
     Component {
         id: sensorStatusInfoComponent
@@ -354,33 +354,33 @@ RowLayout {
         }
     }
 
-    Component {
-        id: vtolTransitionComponent
+    // Component {
+    //     id: vtolTransitionComponent
 
-        Rectangle {
-            width:          mainLayout.width   + (_margins * 2)
-            height:         mainLayout.height  + (_margins * 2)
-            radius:         ScreenTools.defaultFontPixelHeight * 0.5
-            color:          qgcPal.window
-            border.color:   qgcPal.text
+    //     Rectangle {
+    //         width:          mainLayout.width   + (_margins * 2)
+    //         height:         mainLayout.height  + (_margins * 2)
+    //         radius:         ScreenTools.defaultFontPixelHeight * 0.5
+    //         color:          qgcPal.window
+    //         border.color:   qgcPal.text
 
-            QGCButton {
-                id:                 mainLayout
-                anchors.margins:    _margins
-                anchors.top:        parent.top
-                anchors.left:       parent.left
-                text:               _vtolInFWDFlight ? qsTr("Transition to Multi-Rotor") : qsTr("Transition to Fixed Wing")
+    //         QGCButton {
+    //             id:                 mainLayout
+    //             anchors.margins:    _margins
+    //             anchors.top:        parent.top
+    //             anchors.left:       parent.left
+    //             text:               _vtolInFWDFlight ? qsTr("Transition to Multi-Rotor") : qsTr("Transition to Fixed Wing")
 
-                onClicked: {
-                    if (_vtolInFWDFlight) {
-                        mainWindow.vtolTransitionToMRFlightRequest()
-                    } else {
-                        mainWindow.vtolTransitionToFwdFlightRequest()
-                    }
-                    mainWindow.hideIndicatorPopup()
-                }
-            }
-        }
-    }
+    //             onClicked: {
+    //                 if (_vtolInFWDFlight) {
+    //                     mainWindow.vtolTransitionToMRFlightRequest()
+    //                 } else {
+    //                     mainWindow.vtolTransitionToFwdFlightRequest()
+    //                 }
+    //                 mainWindow.hideIndicatorPopup()
+    //             }
+    //         }
+    //     }
+    // }
 }
 

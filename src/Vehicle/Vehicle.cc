@@ -4544,25 +4544,25 @@ void Vehicle::sendRCOverride(float yaw, float thrust, quint16 buttons)
     float range = (maxValue - minValue) / 2.0;     // 400
     float newThrustCommand  = midValue + (thrust * range);
     uint16_t channelValues[19] = {0};
-    channelValues[0] = 0;
-    channelValues[1] = 0;
-    channelValues[2] = 0;
-    channelValues[3] = 0;
-    channelValues[4] = 0; // Replace with actual value if needed
-    channelValues[5] = 0; // Replace with actual value if needed
-    channelValues[6] = 0; // Replace with actual value if needed
-    channelValues[7] = 0; // Replace with actual value if needed
-    channelValues[8] = 0; // Replace with actual value if needed
-    channelValues[9] = 0; // Replace with actual value if needed
-    channelValues[10] = 0; // Replace with actual value if needed
-    channelValues[11] = 0; // Replace with actual value if needed
-    channelValues[12] = 0; // Replace with actual value if needed
-    channelValues[13] = 0; // Replace with actual value if needed
-    channelValues[14] = 0; // Replace with actual value if needed
-    channelValues[15] = 0; // Assuming buttons are sent in the last channel
+    channelValues[0] = 65535;
+    channelValues[1] = 65535;
+    channelValues[2] = 65535;
+    channelValues[3] = 65535;
+    channelValues[4] = 65535; // Replace with actual value if needed
+    channelValues[5] = 65535; // Replace with actual value if needed
+    channelValues[6] = 65535; // Replace with actual value if needed
+    channelValues[7] = 65535; // Replace with actual value if needed
+    channelValues[8] = 65535; // Replace with actual value if needed
+    channelValues[9] = 65535; // Replace with actual value if needed
+    channelValues[10] = 65535; // Replace with actual value if needed
+    channelValues[11] = 65535; // Replace with actual value if needed
+    channelValues[12] = 65535; // Replace with actual value if needed
+    channelValues[13] = 65535; // Replace with actual value if needed
+    channelValues[14] = 65535; // Replace with actual value if needed
+    channelValues[15] = 65535; // Assuming buttons are sent in the last channel
     channelValues[16] = static_cast<uint16_t>(newThrustCommand); // Assuming buttons are sent in the last channel
-    channelValues[17] = 0; // Assuming buttons are sent in the last channel
-    channelValues[18] = 0; // Assuming buttons are sent in the last channel
+    channelValues[17] = 65535; // Assuming buttons are sent in the last channel
+    channelValues[18] = 65535; // Assuming buttons are sent in the last channel
 
     // Pack RC_CHANNELS_OVERRIDE message with all 16 channels
     mavlink_msg_rc_channels_override_pack_chan(
